@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Favorites = props => {
+export const AddReview = props => {
   return (
     <div>
-      Favorites
+      AddReview
     </div>
   );
 };
-
-Favorites.propTypes = {
-
-};
-
 

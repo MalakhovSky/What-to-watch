@@ -1,6 +1,8 @@
-export const Paths = {
-  main: '/',
-  signIn: '/login',
-  favorites: '/favorites',
-  room: '/offer/:id'
-} as const;
+export enum Paths  {
+  main = '/',
+  signIn = '/login',
+  film = '/films/:id',
+  myList ='/mylist',
+  addReview = '/films/:id/review',
+  player = '/player/:id'
+}

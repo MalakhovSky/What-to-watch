@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Main = props => {
+export const Player = props => {
   return (
     <div>
-      Main
+    Player
     </div>
   );
-};
-
-Main.propTypes = {
-
 };

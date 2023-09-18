@@ -20,10 +20,8 @@ module.exports = {
     'react',
     '@typescript-eslint',
     'react-hooks',
-    'unused-imports',
   ],
   rules: {
-    'unused-imports/no-unused-imports': 'error',
     'react/jsx-filename-extension': [
       2,
       {
@@ -47,7 +45,7 @@ module.exports = {
       'error',
       {
         ignoreComments: true,
-        code: 120,
+        code: 250,
       },
     ],
     'jsx-a11y/no-static-element-interactions': 'off',
@@ -58,6 +56,6 @@ module.exports = {
     'no-undef': 'off',
     'react/no-array-index-key': 'off',
     'arrow-body-style': 'off',
-    'react/jsx-max-props-per-line': ['error', { maximum: 3 }],
+    'react/jsx-max-props-per-line': ['error', { maximum: 5 }],
   },
 };

@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Room = props => {
+export const Film = props => {
   return (
     <div>
       Room
     </div>
   );
-};
-
-Room.propTypes = {
-
 };
