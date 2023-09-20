@@ -4,5 +4,6 @@ export enum Paths  {
   film = '/films/:id',
   myList ='/mylist',
   addReview = '/films/:id/review',
-  player = '/player/:id'
+  player = '/player/:id',
+  notFound = '/*'
 }

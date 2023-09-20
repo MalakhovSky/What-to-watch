@@ -6,6 +6,7 @@ import {Film} from "../pages/film";
 import {Paths} from "./paths";
 import {AddReview} from "../pages/addReview";
 import {Player} from "../pages/player";
+import {NotFound} from "../pages/notFound";
 
 export const router = createBrowserRouter([
   {
@@ -31,5 +32,10 @@ export const router = createBrowserRouter([
   {
     path:Paths.player,
     element:<Player/>
+  },
+  {
+    path:Paths.notFound,
+    element:<NotFound/>
   }
+
 ]);

@@ -1,5 +1,6 @@
 import React from 'react';
 import {MovieCardBg} from "../movieCardBg";
+import {Logo} from "../logo";
 
 export const MovieHeader = () => {
   return (
@@ -9,13 +10,8 @@ export const MovieHeader = () => {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-        <div className="logo">
-          <a className="logo__link" href='/src/pages#'>
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </a>
-        </div>
+
+        <Logo/>
 
         <div className="user-block">
           <div className="user-block__avatar">
