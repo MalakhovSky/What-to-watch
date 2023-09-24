@@ -829,6 +829,7 @@ main {
   position: relative; }
 
 .movie-nav__list {
+
   padding: 0;
   margin: 0;
   list-style: none;
@@ -839,6 +840,7 @@ main {
       flex-wrap: wrap; }
 
 .movie-nav__item {
+
   margin-right: 35px; }
   .movie-nav__item--active .movie-nav__link {
     font-weight: bold; }
@@ -848,12 +850,14 @@ main {
     margin-right: 0; }
 
 .movie-nav__link {
+
   display: block;
   color: #EEE5B5;
   text-decoration: none;
   position: relative;
   padding-bottom: 19px; }
   .movie-nav__link::after {
+
     content: '';
     position: absolute;
     z-index: 1;
@@ -864,9 +868,11 @@ main {
     background: #EEE5B5;
     display: none; }
   .movie-nav__link:hover::after {
+
     display: block; }
 
 .movie-rating {
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
