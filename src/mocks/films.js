@@ -1,9 +1,9 @@
 
-const films = [{
+export const films = [{
   id: 1,
   name: "The Grand Budapest Hotel",
-  poster_image: "../../markup/img/the-grand-budapest-hotel-poster.jpg",
-  preview_image: "../../markup/img/the-grand-budapest-hotel.jpg",
+  poster_image: "img/bg-the-grand-budapest-hotel.jpg",
+  preview_image: "img/bg-the-grand-budapest-hotel.jpg",
   background_image: "img/the-grand-budapest-hotel-bg.jpg",
   background_color: "#ffffff",
   video_link: "https://some-link",
@@ -20,8 +20,8 @@ const films = [{
 },{
   id: 2,
   name: "We need to talk about kevin",
-  poster_image: "../../markup/img/we-need-to-talk-about-kevin.jpg",
-  preview_image: "../../markup/img/we-need-to-talk-about-kevin.jpg",
+  poster_image: "img/we-need-to-talk-about-kevin.jpg",
+  preview_image: "img/we-need-to-talk-about-kevin.jpg",
   background_image: "img/the-grand-budapest-hotel-bg.jpg",
   background_color: "#ffffff",
   video_link: "https://some-link",
@@ -39,8 +39,8 @@ const films = [{
   {
     id: 3,
     name: "Fantastic beasts",
-    poster_image: "../../markup/img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
-    preview_image: "../../markup/img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
+    poster_image: "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
+    preview_image: "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
@@ -57,8 +57,8 @@ const films = [{
   },{
     id: 4,
     name: "Bohemian Rhapsody",
-    poster_image: "../../markup/img/bohemian-rhapsody.jpg",
-    preview_image: "../../markup/img/bohemian-rhapsody.jpg",
+    poster_image: "img/bohemian-rhapsody.jpg",
+    preview_image: "img/bohemian-rhapsody.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
@@ -75,8 +75,8 @@ const films = [{
   },{
     id: 5,
     name: "Macbeth",
-    poster_image: "../../markup/img/macbeth.jpg",
-    preview_image: "../../markup/img/macbeth.jpg",
+    poster_image: "img/macbeth.jpg",
+    preview_image: "img/macbeth.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
@@ -94,8 +94,8 @@ const films = [{
   {
     id: 6,
     name: "Aviator",
-    poster_image: "../../markup/img/aviator.jpg",
-    preview_image: "../../markup/img/aviator.jpg",
+    poster_image: "img/aviator.jpg",
+    preview_image: "img/aviator.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
@@ -113,8 +113,8 @@ const films = [{
   {
     id: 7,
     name: "What we Do in the Shadows",
-    poster_image: "../../markup/img/what-we-do-in-the-shadows.jpg",
-    preview_image: "../../markup/img/what-we-do-in-the-shadows.jpg",
+    poster_image: "img/what-we-do-in-the-shadows.jpg",
+    preview_image: "img/what-we-do-in-the-shadows.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
@@ -132,8 +132,8 @@ const films = [{
   {
     id: 8,
     name: "Revenant",
-    poster_image: "../../markup/img/revenant.jpg",
-    preview_image: "../../markup/img/revenant.jpg",
+    poster_image: "img/revenant.jpg",
+    preview_image: "img/revenant.jpg",
     background_image: "img/the-grand-budapest-hotel-bg.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
