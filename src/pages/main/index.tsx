@@ -5,9 +5,11 @@ import {PageFooter} from "../../components/pageFooter";
 import {ShowMoreBtn} from "../../components/showMoreBtn";
 import {MovieHeader} from "../../components/movieHeader";
 import {Catalog} from "../../components/catalog";
+import {films} from '../../mocks/films'
 
 
 export const Main = props => {
+
   return (
     <div>
       <MovieHeader/>

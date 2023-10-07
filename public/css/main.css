@@ -850,6 +850,7 @@ main {
   color: #EEE5B5;
   text-decoration: none;
   position: relative;
+  cursor: pointer;
   padding-bottom: 19px; }
   .movie-nav__link::after {
     content: '';

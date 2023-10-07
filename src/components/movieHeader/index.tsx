@@ -5,7 +5,7 @@ import {Logo} from "../logo";
 export const MovieHeader = () => {
   return (
     <section className="movie-card">
-      <MovieCardBg/>
+      <MovieCardBg backImg='img/bg-the-grand-budapest-hotel.jpg'/>
 
       <h1 className="visually-hidden">WTW</h1>
 
