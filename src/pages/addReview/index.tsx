@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link, useParams} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {MovieCardBg} from "../../components/movieCardBg";
 import {Logo} from "../../components/logo";
 import {Avatar} from "../../components/avatar";
 import {films} from "../../mocks/films";
-import {Link, useParams} from "react-router-dom";
+
 
 export const AddReview = props => {
   const {id} = useParams()
@@ -35,7 +36,7 @@ export const AddReview = props => {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+            <img src={`${film.poster_image}`} alt={film.name} width="218"
                  height="327"/>
           </div>
         </div>

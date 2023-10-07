@@ -63,7 +63,7 @@ export const Film = props => {
                    height="327"/>
             </div>
 
-            <Tabs/>
+            <Tabs id={id}/>
           </div>
         </div>
       </section>
