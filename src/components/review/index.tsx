@@ -17,7 +17,7 @@ export const Review = ({comment,userName,date,rating}:PropsType) => {
 
           <footer className="review__details">
             <cite className="review__author">{userName}</cite>
-            <time className="review__date" dateTime={new Date(date).toLocaleString()}>{new Date(date).toLocaleString()}-Фораматировать</time>
+            <time className="review__date" dateTime="2016-12-24">{date}-Фораматировать</time>
           </footer>
         </blockquote>
 
