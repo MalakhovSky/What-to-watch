@@ -1,19 +1,40 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {reviews} from "../../mocks/reviews"
 import {films} from "../../mocks/films";
 import {Review} from "../review";
 
-type PropsType={
-  id:number;
+type FilmType = {
+  id: number,
+  name: string,
+  poster_image: string,
+  preview_image: string,
+  background_image: string,
+  background_color: string,
+  video_link: string,
+  preview_video_link: string,
+  description: string,
+  rating: number,
+  scores_count: number,
+  director: string,
+  starring: string[],
+  run_time: number,
+  genre: string,
+  released: number,
+  is_favorite: boolean
 }
 
-export const Tabs = ({id}:PropsType) => {
+type TabsType={
+  film: FilmType;
+}
+
+export const Tabs: FC<TabsType> = ({
+  film
+  }) => {
   const [toggleState, SetToggleState] = useState(1);
 
   const toggleTab = (index) =>{
     SetToggleState(index)
   }
-
 
   return (
     <div className="movie-card__desc">
@@ -33,13 +54,14 @@ export const Tabs = ({id}:PropsType) => {
 
       <div className={toggleState !== 1 ? "visually-hidden" :""} >
       <div className="movie-rating ">
-        <div className="movie-rating__score">8,9</div>
+        <div className="movie-rating__score">{film.rating}</div>
         <p className="movie-rating__meta">
+          {/**todo Тут сделать оценку в зависимости от рейтинга **/}
           <span className="movie-rating__level">Very good</span>
-          <span className="movie-rating__count">240 ratings</span>
+          <span className="movie-rating__count">{film.scores_count} ratings</span>
         </p>
       </div>
-
+        {/**todo Тут сделать описание film.description, а то мне лень **/}
       <div className="movie-card__text">
         <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
           Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.</p>
@@ -49,9 +71,9 @@ export const Tabs = ({id}:PropsType) => {
           mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her
           murder.</p>
 
-        <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
+        <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
 
-        <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+        <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 4).map((star) => (star))}
           and other</strong></p>
       </div>
       </div>
@@ -62,39 +84,28 @@ export const Tabs = ({id}:PropsType) => {
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Director</strong>
-            <span className="movie-card__details-value">Wes Andreson</span>
+            <span className="movie-card__details-value">{film.director}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-                    Bill Murray, <br/>
-                    Edward Norton, <br/>
-                    Jude Law, <br/>
-                    Willem Dafoe, <br/>
-                    Saoirse Ronan, <br/>
-                    Tony Revoloru, <br/>
-                    Tilda Swinton, <br/>
-                    Tom Wilkinson, <br/>
-                    Owen Wilkinson, <br/>
-                    Adrien Brody, <br/>
-                    Ralph Fiennes, <br/>
-                    Jeff Goldblum
-                  </span>
+              {film.starring.map((star) => (<>{star}<br/></>))}
+            </span>
           </p>
         </div>
 
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Run Time</strong>
-            <span className="movie-card__details-value">1h 39m</span>
+            <span className="movie-card__details-value">{film.run_time}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
-            <span className="movie-card__details-value">Comedy</span>
+            <span className="movie-card__details-value">{film.genre}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>
-            <span className="movie-card__details-value">2014</span>
+            <span className="movie-card__details-value">{film.released}</span>
           </p>
         </div>
       </div>

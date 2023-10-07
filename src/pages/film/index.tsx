@@ -9,16 +9,14 @@ import {Tabs} from "../../components/tabs";
 import {films} from "../../mocks/films";
 import {Link, useParams} from "react-router-dom";
 
-export const Film = props => {
-
+export const Film = () => {
 
   const {id} = useParams()
   const film = films.find((item)=>item.id === Number(id))
-  console.log(film,typeof(id),'DQWDDDDDDDDDD')
 
   return (
     <div>
-      <section className="movie-card movie-card--full">
+      <section style={{backgroundColor: film.background_color}} className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <MovieCardBg backImg={`${film.background_image}`}/>
 
@@ -63,7 +61,7 @@ export const Film = props => {
                    height="327"/>
             </div>
 
-            <Tabs id={id}/>
+            <Tabs film={film}/>
           </div>
         </div>
       </section>

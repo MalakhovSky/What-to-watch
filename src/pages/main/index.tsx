@@ -10,10 +10,6 @@ import {films} from '../../mocks/films'
 
 export const Main = props => {
 
-
-
-
-
   return (
     <div>
       <MovieHeader/>
