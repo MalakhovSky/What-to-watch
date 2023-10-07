@@ -1,9 +1,9 @@
-
+import {Main} from "../pages/main";
 
 
 const App = () => {
   return (
-    <div>Проверка</div>
+    <Main/>
   )
 }
 

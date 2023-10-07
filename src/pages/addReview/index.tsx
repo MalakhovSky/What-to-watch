@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import {MovieCardBg} from "../../components/movieCardBg";
 import {Logo} from "../../components/logo";
 import {Avatar} from "../../components/avatar";
+import {films} from "../../mocks/films";
+import {Link, useParams} from "react-router-dom";
 
 export const AddReview = props => {
+  const {id} = useParams()
+  const film = films.find((item)=>item.id === Number(id))
   return (
     <div>
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
-         <MovieCardBg/>
+         <MovieCardBg name={film.name} backImg={`${film.background_image}`}/>
 
           <h1 className="visually-hidden">WTW</h1>
 
@@ -19,7 +23,7 @@ export const AddReview = props => {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                  <Link to={`/films/${id}`} className="breadcrumbs__link">{film.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -46,7 +50,7 @@ export const AddReview = props => {
                 <input className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked/>
+                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" />
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
                 <input className="rating__input" id="star-4" type="radio" name="rating" value="4"/>
@@ -61,7 +65,7 @@ export const AddReview = props => {
                 <input className="rating__input" id="star-7" type="radio" name="rating" value="7"/>
                 <label className="rating__label" htmlFor="star-7">Rating 7</label>
 
-                <input className="rating__input" id="star-8" type="radio" name="rating" value="8" checked/>
+                <input className="rating__input" id="star-8" type="radio" name="rating" value="8" />
                 <label className="rating__label" htmlFor="star-8">Rating 8</label>
 
                 <input className="rating__input" id="star-9" type="radio" name="rating" value="9"/>

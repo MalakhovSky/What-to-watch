@@ -4,7 +4,7 @@ export const films = [{
   name: "The Grand Budapest Hotel",
   poster_image: "img/bg-the-grand-budapest-hotel.jpg",
   preview_image: "img/bg-the-grand-budapest-hotel.jpg",
-  background_image: "img/the-grand-budapest-hotel-bg.jpg",
+  background_image: "img/the-grand-budapest-hotel-poster.jpg",
   background_color: "#ffffff",
   video_link: "https://some-link",
   preview_video_link: "https://some-link",
@@ -37,11 +37,11 @@ export const films = [{
   is_favorite: false
 },
   {
-    id: 3,
+    id:3 ,
     name: "Fantastic beasts",
     poster_image: "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
     preview_image: "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
-    background_image: "img/the-grand-budapest-hotel-bg.jpg",
+    background_image: "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
     background_color: "#ffffff",
     video_link: "https://some-link",
     preview_video_link: "https://some-link",

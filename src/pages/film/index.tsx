@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {MovieCardBg} from "../../components/movieCardBg";
 import {Logo} from "../../components/logo";
@@ -6,13 +6,21 @@ import {Avatar} from "../../components/avatar";
 import MoviesLikeThis from "../../components/moviesLikeThis";
 import {PageFooter} from "../../components/pageFooter";
 import {Tabs} from "../../components/tabs";
+import {films} from "../../mocks/films";
+import {Link, useParams} from "react-router-dom";
 
 export const Film = props => {
+
+
+  const {id} = useParams()
+  const film = films.find((item)=>item.id === Number(id))
+  console.log(film,typeof(id),'DQWDDDDDDDDDD')
+
   return (
     <div>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
-          <MovieCardBg/>
+          <MovieCardBg backImg={`${film.background_image}`}/>
 
           <h1 className="visually-hidden">WTW</h1>
 
@@ -23,10 +31,10 @@ export const Film = props => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{film.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{film.genre}</span>
+                <span className="movie-card__year">{film.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -42,7 +50,7 @@ export const Film = props => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -51,7 +59,7 @@ export const Film = props => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+              <img src={`${film.poster_image}`} alt={`${film.name}`} width="218"
                    height="327"/>
             </div>
 

@@ -1,9 +1,14 @@
 import React from 'react';
 
-export const MovieCardBg = () => {
+type PropsType={
+  backImg:string;
+  name?:string;
+}
+
+export const MovieCardBg = ({backImg,name}:PropsType) => {
   return (
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+        <img src={`${backImg}`} alt={name}/>
       </div>
   );
 };
