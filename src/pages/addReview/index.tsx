@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {MovieCardBg} from "../../components/movieCardBg";
@@ -10,6 +10,12 @@ import {films} from "../../mocks/films";
 export const AddReview = props => {
   const {id} = useParams()
   const film = films.find((item)=>item.id === Number(id))
+
+  const [starValue, setStarValue] = useState(0);
+  const setRating = (e) =>{
+    setStarValue(e.target.value)
+  }
+
   return (
     <div>
       <section className="movie-card movie-card--full">
@@ -44,35 +50,36 @@ export const AddReview = props => {
         <div className="add-review">
           <form action="#" className="add-review__form">
             <div className="rating">
-              <div className="rating__stars">
-                <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
+              <div className="rating__stars" >
+
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
                 <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
-                <input className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" />
+                <input onClick={(e)=>setRating(e)}  className="rating__input" id="star-3" type="radio" name="rating" value="3" />
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
-                <input className="rating__input" id="star-4" type="radio" name="rating" value="4"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-4" type="radio" name="rating" value="4"/>
                 <label className="rating__label" htmlFor="star-4">Rating 4</label>
 
-                <input className="rating__input" id="star-5" type="radio" name="rating" value="5"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-5" type="radio" name="rating" value="5"/>
                 <label className="rating__label" htmlFor="star-5">Rating 5</label>
 
-                <input className="rating__input" id="star-6" type="radio" name="rating" value="6"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-6" type="radio" name="rating" value="6"/>
                 <label className="rating__label" htmlFor="star-6">Rating 6</label>
 
-                <input className="rating__input" id="star-7" type="radio" name="rating" value="7"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-7" type="radio" name="rating" value="7"/>
                 <label className="rating__label" htmlFor="star-7">Rating 7</label>
 
-                <input className="rating__input" id="star-8" type="radio" name="rating" value="8" />
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-8" type="radio" name="rating" value="8" />
                 <label className="rating__label" htmlFor="star-8">Rating 8</label>
 
-                <input className="rating__input" id="star-9" type="radio" name="rating" value="9"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-9" type="radio" name="rating" value="9"/>
                 <label className="rating__label" htmlFor="star-9">Rating 9</label>
 
-                <input className="rating__input" id="star-10" type="radio" name="rating" value="10"/>
+                <input onClick={(e)=>setRating(e)} className="rating__input" id="star-10" type="radio" name="rating" value="10"/>
                 <label className="rating__label" htmlFor="star-10">Rating 10</label>
               </div>
             </div>
