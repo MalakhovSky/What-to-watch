@@ -11,9 +11,10 @@ export const CatalogMoviesList = props => {
   return (
 
     <div className="catalog__movies-list">
-      {films.map((obj:any,index) => (
-        <MovieCard  key = {obj.id}
-                   name = {obj.name}
+      {films.map((obj: any, index) => (
+        <MovieCard key={obj.id}
+                   name={obj.name}
+                   prevVideo={obj.preview_video_link}
                    id={obj.id}
                    posterImage={obj.poster_image}/>
       ))}
