@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 
 type PropsType = {
   name: string,
-  posterImage: string,
+  prevImage: string,
   id: number,
   prevVideo: string,
 }
 
-export const MovieCard = ({name, posterImage, id, prevVideo}: PropsType) => {
+export const MovieCard = ({name, prevImage, id, prevVideo}: PropsType) => {
   const playerRef = useRef(null);
   const playVideo = () => {
     playerRef.current.play()
@@ -30,11 +30,12 @@ export const MovieCard = ({name, posterImage, id, prevVideo}: PropsType) => {
                onMouseOut={()=>pauseVideo()}
           >
             <video
+              style={{width: 280}}
               ref={playerRef}
-              poster={`${posterImage}`}
+              poster={`${prevImage}`}
               muted
             >
-              <source src='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+              <source src={prevVideo}
                       type="video/mp4"/>
             </video>
 

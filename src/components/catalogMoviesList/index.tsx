@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {MovieCard} from "../movieCard";
-import {films} from "../../mocks/films";
 import {Paths} from "../../router/paths";
+import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
 export const CatalogMoviesList = props => {
+  const films = useAppSelector(state=> state.films.films)
+  console.log(films,films[0],'ЭТО ДАТА')
 
 
   return (
@@ -16,7 +18,7 @@ export const CatalogMoviesList = props => {
                    name={obj.name}
                    prevVideo={obj.preview_video_link}
                    id={obj.id}
-                   posterImage={obj.poster_image}/>
+                   prevImage={obj.preview_image}/>
       ))}
 
     </div>

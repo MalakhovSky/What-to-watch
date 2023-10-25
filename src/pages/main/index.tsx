@@ -7,7 +7,7 @@ import {MovieHeader} from "../../components/movieHeader";
 import {Catalog} from "../../components/catalog";
 import {films} from '../../mocks/films'
 import {fetchFilms} from "../../redux/features/asyncActions";
-import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {AppDispatch} from "../../redux/store";
 
 
