@@ -30,7 +30,7 @@ export const MovieCard = ({name, prevImage, id, prevVideo}: PropsType) => {
                onMouseOut={()=>pauseVideo()}
           >
             <video
-              style={{width: 280}}
+              style={{width: 300}}
               ref={playerRef}
               poster={`${prevImage}`}
               muted
