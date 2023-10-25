@@ -32,7 +32,6 @@ export const MovieCard = ({name, posterImage, id, prevVideo}: PropsType) => {
             <video
               ref={playerRef}
               poster={`${posterImage}`}
-
               muted
             >
               <source src='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
