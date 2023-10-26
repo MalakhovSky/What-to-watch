@@ -5,23 +5,27 @@ import {MovieCard} from "../movieCard";
 import {Paths} from "../../router/paths";
 import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {ShowMoreBtn} from "../showMoreBtn";
+import {INIT_FILMS_COUNTER} from "../../consts";
+import {Films} from "../../redux/features/filmsSlice";
+
+
 
 export const CatalogMoviesList = props => {
   const films = useAppSelector(state => state.films.films)
   console.log(films, 'ЭТО ДАТА')
 
-  const [counter, setCounter] = useState(8);
+  const [counter, setCounter] = useState(INIT_FILMS_COUNTER);
   const renderFilms = films.slice(0, counter);
 
 
   const moreFilms = () => {
-    setCounter(counter + 8)
+    setCounter(prevState =>prevState + 8)
   }
 
   return (
     <div>
       <div className="catalog__movies-list">
-        {renderFilms.map((obj: any, index) => (
+        {renderFilms.map((obj) => (
           <MovieCard key={obj.id}
                      name={obj.name}
                      prevVideo={obj.preview_video_link}

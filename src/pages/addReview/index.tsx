@@ -5,17 +5,30 @@ import {MovieCardBg} from "../../components/movieCardBg";
 import {Logo} from "../../components/logo";
 import {Avatar} from "../../components/avatar";
 import {films} from "../../mocks/films";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
+import {fetchFilms} from "../../redux/features/asyncActions";
 
 
 export const AddReview = props => {
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchFilms())
+  }, [dispatch]);
+
+  const filmsData = useAppSelector(state=>state.films.films)
   const {id} = useParams()
-  const film = films.find((item)=>item.id === Number(id))
+  const film = filmsData?.find((item)=>item.id === Number(id))
 
   const [starValue, setStarValue] = useState(0);
   const setRating = (e) =>{
     setStarValue(e.target.value)
   }
 
+  if(!film){
+    return <div>LOADING</div>
+  } else {
   return (
     <div>
       <section className="movie-card movie-card--full">
@@ -96,6 +109,6 @@ export const AddReview = props => {
         </div>
         </section>
     </div>
-  );
+  )}
 };
 
