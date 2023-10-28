@@ -34,7 +34,22 @@ export const fetchFilms = createAsyncThunk<Film[],undefined,{rejectValue:string}
       return rejectWithValue('Ошибка получения общих данных',)
     });
 
-  console.log(data,'RESUTLATSA')
   return data
 
 })
+
+export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+  'commentsSlice/fetchCommentsGet',
+  async (filmId,{rejectWithValue}) =>{
+
+    const {data} = await axios.get(`https://6.react.pages.academy/wtw/comments/${filmId}`)
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения комментариев',)
+      });
+
+    console.log(data,'Комменты')
+    return data
+  })
