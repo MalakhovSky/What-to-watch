@@ -2,34 +2,27 @@ import React, {FC, useEffect, useState} from 'react';
 import {reviews} from "../../mocks/reviews"
 import {films} from "../../mocks/films";
 import {Review} from "../review";
+import {Films} from "../../redux/features/filmsSlice";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
+import {fetchCommentsGet} from "../../redux/features/asyncActions";
+import {useParams} from "react-router-dom";
 
-type FilmType = {
-  id: number,
-  name: string,
-  poster_image: string,
-  preview_image: string,
-  background_image: string,
-  background_color: string,
-  video_link: string,
-  preview_video_link: string,
-  description: string,
-  rating: number,
-  scores_count: number,
-  director: string,
-  starring: string[],
-  run_time: number,
-  genre: string,
-  released: number,
-  is_favorite: boolean
-}
 
 type TabsType = {
-  film: FilmType;
+  film: Films;
 }
 
-export const Tabs: FC<TabsType> = ({
-                                     film
-                                   }) => {
+export const Tabs: FC<TabsType> = ({film}) => {
+  const dispatch = useAppDispatch()
+  const commentsData = useAppSelector(state=>state.comments.comments)
+
+  const {id} = useParams()
+
+  useEffect(() => {
+    dispatch(fetchCommentsGet(id))
+  }, [dispatch,id]);
+  console.log(commentsData,'COMMENTS')
+
   const [toggleState, SetToggleState] = useState(1);
   const [rating, setRating] = useState('')
 
@@ -76,7 +69,7 @@ export const Tabs: FC<TabsType> = ({
           <p>{film.description}</p>
           <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
 
-          <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 4).map((star) => (star))}
+          <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 4).map((star) => (`${star}, `))}
             and other </strong></p>
         </div>
       </div>
@@ -116,7 +109,7 @@ export const Tabs: FC<TabsType> = ({
 
       <div className={toggleState !== 3 ? "visually-hidden" : ""}>
         {
-          reviews.map((item) => (
+          commentsData.map((item) => (
             <Review key={item.id}
                     comment={item.comment}
                     userName={item.user.name}
