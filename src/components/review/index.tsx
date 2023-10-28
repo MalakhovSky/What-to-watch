@@ -7,7 +7,11 @@ type PropsType = {
   rating:number;
 }
 
+
 export const Review = ({comment,userName,date,rating}:PropsType) => {
+
+  const commentDate = (new Date(date)).toDateString()
+
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
@@ -17,7 +21,7 @@ export const Review = ({comment,userName,date,rating}:PropsType) => {
 
           <footer className="review__details">
             <cite className="review__author">{userName}</cite>
-            <time className="review__date" dateTime="2016-12-24">{date}-Фораматировать</time>
+            <time className="review__date" dateTime="2016-12-24">{commentDate}</time>
           </footer>
         </blockquote>
 
