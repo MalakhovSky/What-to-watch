@@ -8,6 +8,7 @@ import {PageFooter} from "../../components/pageFooter";
 import {Tabs} from "../../components/tabs";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchFilms} from "../../redux/features/asyncActions";
+import {Player} from "../player";
 
 export const Film = () => {
   const dispatch = useAppDispatch()
@@ -28,6 +29,7 @@ export const Film = () => {
         <section style={{backgroundColor: film?.background_color}} className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <MovieCardBg backImg={`${film.background_image}`}/>
+
 
             <h1 className="visually-hidden">WTW</h1>
 

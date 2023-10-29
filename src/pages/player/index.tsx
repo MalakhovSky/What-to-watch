@@ -19,8 +19,10 @@ export const Player = () => {
   console.log(film,'film')
 
   const playerRef = useRef(null);
-  const toggleVideo = () => {
+  console.log(playerRef,'currn')
 
+
+  const toggleVideo = () => {
     if(isPlay){
       playerRef.current.pause()
     }else{
@@ -29,25 +31,32 @@ export const Player = () => {
     setIsPlay(!isPlay)
   }
 
+  const toggleScreen = () =>{
+
+    playerRef.current.webkitEnterFullscreen()
+  }
+
+  const filmTimeHours = Math.floor(film?.run_time/60)
+
   if(film){
   return (
 
     <div className="player">
-      <video className="player__video" poster={film.poster_image} ref={playerRef} >
+      <video className="player__video" poster={film.poster_image} ref={playerRef}>
         <source src={film.video_link}
 
                 type="video/mp4"/>
       </video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button onClick={()=>history.go(-1)} type="button" className="player__exit">Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{left:" 30%"}}>Toggler</div>
+            <progress className="player__progress" value={2} max={film.run_time}></progress>
+            {/*<div className="player__toggler" style={{left:" 30%"}}>Toggler</div>*/}
           </div>
-          <div className="player__time-value">{film.run_time}Фораматировать</div>
+          <div className="player__time-value">{`${filmTimeHours}:${(film.run_time)-60*filmTimeHours}`}</div>
         </div>
 
         <div className="player__controls-row">
@@ -56,9 +65,9 @@ export const Player = () => {
             {
               !isPlay ? <svg viewBox="0 0 19 19" width="19" height="19">
                 <use href="#play-s"></use>
-              </svg>:<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <polygon id="Line" fill="#EEE5B5" fill-rule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"></polygon>
-                <polygon id="Line" fill="#EEE5B5" fill-rule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"></polygon>
+              </svg>:<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"></polygon>
+                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"></polygon>
               </g></svg>
 
             }
@@ -66,7 +75,7 @@ export const Player = () => {
           </button>
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
+          <button onClick={()=>toggleScreen()} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use href="#full-screen"></use>
             </svg>
