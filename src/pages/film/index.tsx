@@ -49,7 +49,7 @@ export const Film = () => {
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use href="#play-s"></use>
                     </svg>
-                    <span>Play</span>
+                   <Link to={`/player/${id}`} className="breadcrumbs__link"><span>Play</span></Link>
                   </button>
                   <button className="btn btn--list movie-card__button" type="button">
                     <svg viewBox="0 0 19 20" width="19" height="20">
