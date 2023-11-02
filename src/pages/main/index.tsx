@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CatalogMoviesList} from "../../components/catalogMoviesList";
 import {CatalogGenresList} from "../../components/catalogGenresList";
 import {PageFooter} from "../../components/pageFooter";
@@ -13,11 +13,13 @@ import {AppDispatch} from "../../redux/store";
 
 export const Main = props => {
   const dispatch = useAppDispatch()
+  const [sortedGenres, setSortedGenres] = useState([]);
 
   useEffect(() => {
    dispatch(fetchFilms())
   },[dispatch] );
 
+  const films = useAppSelector(state => state.films.films)
 
   return (
     <div>

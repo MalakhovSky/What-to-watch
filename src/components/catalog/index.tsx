@@ -6,13 +6,13 @@ import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
 export const Catalog = () => {
 
-
+  const films = useAppSelector(state => state.films.films)
 
   return (
     <div>
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <CatalogGenresList/>
+        <CatalogGenresList films={films}/>
         <CatalogMoviesList />
       </section>
     </div>
