@@ -54,7 +54,7 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
     return data
   })
 
-export const getLogin = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+export const getUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
   'commentsSlice/fetchCommentsGet',
   async (_,{rejectWithValue}) =>{
 
