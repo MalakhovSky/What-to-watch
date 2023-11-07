@@ -3,9 +3,8 @@ import React, {useEffect} from 'react';
 export const CatalogGenresList = ({films}) => {
   console.log(films,'filmы')
 
-  if(films){
-    console.log('govnpo')
-  }
+  useEffect(() => {
+  }, []);
 
 
 

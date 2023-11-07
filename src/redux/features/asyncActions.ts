@@ -48,7 +48,7 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
       })
       .catch(error=>{
         return rejectWithValue('Ошибка получения комментариев',)
-      });
+      });`111111`
 
     console.log(data,'Комменты')
     return data
@@ -59,6 +59,22 @@ export const getUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
   async (_,{rejectWithValue}) =>{
 
     const {data} = await axios.get('https://6.react.pages.academy/wtw/login')
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения пользователя',)
+      });
+
+    console.log(data,'Логин')
+    return data
+  })
+
+export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+  'commentsSlice/fetchCommentsGet',
+  async (_,{rejectWithValue}) =>{
+
+    const {data} = await axios.post('https://6.react.pages.academy/wtw/login')
       .then(res =>{
         return res
       })

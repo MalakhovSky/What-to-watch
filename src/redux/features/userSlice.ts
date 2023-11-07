@@ -4,19 +4,20 @@ import {getUsers} from "./asyncActions";
 
 export type User = {
   email:string
-  password:string
+  id:number
   name:string
   avatar_url:string
+
 }
 
  type Users = {
-  users: User[]
+  user?: User
   loading?:string
   error?:string
 }
 
 const initialState: Users = {
-  users:[],
+  user:undefined,
   loading:'',
   error:''
 }
