@@ -85,5 +85,7 @@ export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>
       });
 
     console.log(data,'ЛогинPOST')
+    localStorage.setItem("user",JSON.stringify(data))
     return data
+
   })

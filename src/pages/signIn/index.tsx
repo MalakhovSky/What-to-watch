@@ -19,7 +19,6 @@ export const SignIn = props => {
   }
 
   const submitSingIn = () =>{
-
     dispatch(postUsers({"email": `${email}`, "password": `${password}`}))
   }
 
