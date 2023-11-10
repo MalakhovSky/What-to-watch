@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {User} from "./userSlice";
 
 export type Film = {
   id:number,
@@ -48,14 +49,14 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
       })
       .catch(error=>{
         return rejectWithValue('Ошибка получения комментариев',)
-      });`111111`
+      });
 
     console.log(data,'Комменты')
     return data
   })
 
-export const getUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
-  'commentsSlice/fetchCommentsGet',
+export const getUser = createAsyncThunk<User,undefined,{rejectValue:string}>(
+  'userSlice/getUsers',
   async (_,{rejectWithValue}) =>{
 
     const {data} = await axios.get('https://6.react.pages.academy/wtw/login')
@@ -72,9 +73,10 @@ export const getUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
 
 export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
   'commentsSlice/fetchCommentsGet',
-  async (_,{rejectWithValue}) =>{
+  async (signInData,{rejectWithValue}) =>{
+    console.log(signInData,'tutDataSing')
 
-    const {data} = await axios.post('https://6.react.pages.academy/wtw/login')
+    const {data} = await axios.post('https://6.react.pages.academy/wtw/login',signInData)
       .then(res =>{
         return res
       })
@@ -82,6 +84,6 @@ export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>
         return rejectWithValue('Ошибка получения пользователя',)
       });
 
-    console.log(data,'Логин')
+    console.log(data,'ЛогинPOST')
     return data
   })

@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {Main} from "../pages/main";
 import {useAppDispatch, useAppSelector} from "../redux/hooks/useAppDispatch";
-import {fetchFilms, getUsers} from "../redux/features/asyncActions";
+import {fetchFilms, getUser} from "../redux/features/asyncActions";
 
 
 
