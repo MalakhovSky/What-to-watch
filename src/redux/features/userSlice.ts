@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {getUsers} from "./asyncActions";
+import {getUser} from "./asyncActions";
 
 export type User = {
   email:string
@@ -32,13 +32,13 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, (state) => {
+      .addCase(getUser.pending, (state) => {
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
+      .addCase(getUser.fulfilled, (state, action) => {
         // state.films.push(action.payload)
-        state.users = action.payload
+        state.user = action.payload
       })
-      .addCase(getUsers.rejected, (state, action) => {
+      .addCase(getUser.rejected, (state, action) => {
       })
 
 

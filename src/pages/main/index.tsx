@@ -6,7 +6,7 @@ import {ShowMoreBtn} from "../../components/showMoreBtn";
 import {MovieHeader} from "../../components/movieHeader";
 import {Catalog} from "../../components/catalog";
 import {films} from '../../mocks/films'
-import {fetchFilms, getUsers} from "../../redux/features/asyncActions";
+import {fetchFilms, getUser, postUsers} from "../../redux/features/asyncActions";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {AppDispatch} from "../../redux/store";
 
@@ -17,11 +17,12 @@ export const Main = props => {
 
   useEffect(() => {
    dispatch(fetchFilms())
-    dispatch(getUsers())
   },[dispatch] );
 
 
   const films = useAppSelector(state => state.films.films)
+  const user = useAppSelector(state => state.users.user)
+  console.log(user,'ЮЗЭР_____________________')
 
   return (
     <div>

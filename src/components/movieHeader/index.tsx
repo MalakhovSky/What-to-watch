@@ -1,6 +1,7 @@
 import React from 'react';
 import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
+import {Avatar} from "../avatar";
 
 export const MovieHeader = () => {
   return (
@@ -13,11 +14,7 @@ export const MovieHeader = () => {
 
         <Logo/>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" />
-          </div>
-        </div>
+        <Avatar/>
       </header>
 
       <div className="movie-card__wrap">
