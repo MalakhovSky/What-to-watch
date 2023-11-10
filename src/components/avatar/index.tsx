@@ -3,8 +3,9 @@ import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
 export const Avatar = () => {
 
-  const user = useAppSelector(state => state.users.user)
-  console.log(user,'USER V AVATAR')
+  const user = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : {}
 
 
     return (

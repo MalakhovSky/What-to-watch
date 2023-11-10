@@ -89,3 +89,19 @@ export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>
     return data
 
   })
+
+export const fetchPromo = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+  'promoSlice/fetchPromo',
+  async (_,{rejectWithValue}) =>{
+
+    const {data} = await axios.get('https://6.react.pages.academy/wtw/films/promo')
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения пользователя',)
+      });
+
+    localStorage.setItem("promo",JSON.stringify(data))
+    return data
+  })
