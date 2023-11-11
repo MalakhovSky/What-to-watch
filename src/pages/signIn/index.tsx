@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {Logo} from "../../components/logo";
 import {postUsers} from "../../redux/features/asyncActions";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
+import {PageFooter} from "../../components/pageFooter";
+import {Link} from "react-router-dom";
 
 export const SignIn = props => {
   const dispatch = useAppDispatch()
@@ -45,12 +47,15 @@ export const SignIn = props => {
             </div>
           </div>
           <div className="sign-in__submit">
-            <div className="sign-in__btn" onClick={submitSingIn}>Sign in</div>
+            <Link  to='/'>
+              <div className="sign-in__btn" onClick={submitSingIn}>Sign in</div>
+            </Link>
+
           </div>
         </form>
       </div>
 
-      <pageFooter/>
+      <PageFooter/>
     </div>
   );
 };

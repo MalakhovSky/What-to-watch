@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
 export const Avatar = () => {
-
   const user = localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))
     : {}

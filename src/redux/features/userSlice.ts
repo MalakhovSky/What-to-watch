@@ -1,25 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import {getUser} from "./asyncActions";
+import {createSlice} from '@reduxjs/toolkit'
+import type {PayloadAction} from '@reduxjs/toolkit'
+import {getUser, postUsers} from "./asyncActions";
 
 export type User = {
-  email:string
-  id:number
-  name:string
-  avatar_url:string
+  email: string
+  id: number
+  name: string
+  avatar_url: string
+  loading?: string
+  error?: string
 
 }
 
- type Users = {
+type Users = {
   user?: User
-  loading?:string
-  error?:string
+  loading?: string
+  error?: string
+  isLogged: boolean
 }
 
 const initialState: Users = {
-  user:undefined,
-  loading:'',
-  error:''
+  user: undefined,
+  loading: '',
+  error: '',
+  isLogged:false
 }
 
 export const userSlice = createSlice({
@@ -32,13 +36,15 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUser.pending, (state) => {
+      .addCase(postUsers.pending, (state) => {
       })
-      .addCase(getUser.fulfilled, (state, action) => {
+      .addCase(postUsers.fulfilled, (state, action) => {
         // state.films.push(action.payload)
-        state.user = action.payload
+        state.user = action.payload;
+        state.isLogged = true;
+
       })
-      .addCase(getUser.rejected, (state, action) => {
+      .addCase(postUsers.rejected, (state, action) => {
       })
 
 

@@ -3,7 +3,7 @@ import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
 import {Avatar} from "../avatar";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
-import {fetchPromo} from "../../redux/features/asyncActions";
+import {fetchPromo, getUser} from "../../redux/features/asyncActions";
 import {Link} from "react-router-dom";
 
 export const MovieHeader = () => {
@@ -12,6 +12,8 @@ export const MovieHeader = () => {
   useEffect(() => {
     dispatch(fetchPromo())
   }, [dispatch]);
+
+
 
 
   const promo = useAppSelector(state => state.promo.promo)

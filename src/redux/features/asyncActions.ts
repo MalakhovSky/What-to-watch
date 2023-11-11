@@ -102,6 +102,6 @@ export const fetchPromo = createAsyncThunk<Film[],undefined,{rejectValue:string}
         return rejectWithValue('Ошибка получения пользователя',)
       });
 
-    localStorage.setItem("promo",JSON.stringify(data))
+
     return data
   })
