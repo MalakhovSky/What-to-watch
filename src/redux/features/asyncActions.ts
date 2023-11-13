@@ -55,6 +55,24 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
     return data
   })
 
+
+
+export const fetchCommentsPost = async ({id,starValue,comment})=>{
+  await axios.post(`https://6.react.pages.academy/wtw/comments/${id}`,`"rating:"${starValue}, "comment":"${comment}"`)
+    .then(res =>{
+      console.log(res,'res')
+      return res
+
+    })
+    .catch(error=>{
+      return error
+    });
+}
+
+
+
+
+
 export const getUser = createAsyncThunk<User,undefined,{rejectValue:string}>(
   'userSlice/getUsers',
   async (_,{rejectWithValue}) =>{

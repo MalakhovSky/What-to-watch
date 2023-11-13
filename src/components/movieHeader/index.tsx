@@ -16,6 +16,7 @@ export const MovieHeader = () => {
 
 
 
+
   const promo = useAppSelector(state => state.promo.promo)
   console.log(promo,'PROMOs')
   return (
@@ -26,7 +27,8 @@ export const MovieHeader = () => {
 
       <header className="page-header movie-card__head">
         <Logo/>
-        <Avatar/>
+          <Avatar/>
+
       </header>
 
       <div className="movie-card__wrap">
