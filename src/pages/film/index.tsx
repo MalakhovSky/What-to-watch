@@ -18,9 +18,10 @@ export const Film = () => {
   }, [dispatch]);
 
   const {id} = useParams()
-  const filmsData = useAppSelector(state=>state.films.films)
+  const films = useAppSelector(state=>state.films.films)
 
-  const film = filmsData.find((item)=>item.id === Number(id))
+  const film = films.find((item)=>item.id === Number(id))
+
 
 
   if(film){
@@ -85,7 +86,7 @@ export const Film = () => {
 
 
         <div className="page-content">
-          <MoviesLikeThis/>
+          <MoviesLikeThis films={films} genre={film.genre}/>
           <PageFooter/>
         </div>
       </div>
