@@ -1,20 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import {useAppSelector} from "../../redux/hooks/useAppDispatch";
+import React from 'react';
+import {Link} from "react-router-dom";
+
 
 export const Avatar = () => {
 
   const user = localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))
     : {}
+  console.log(user,'АВАТАРКА')
+
+
+
+
 
     return (
       <div className="user-block">
         {
-          user !== undefined ? <div className="user-block__avatar">
+          localStorage.getItem('user') !== null || undefined ? <div className="user-block__avatar">
             <img src={`${user?.avatar_url}`} alt="User avatar" width="63" height="63"/>
           </div>
             :
-            <div>lox</div>
+            <Link  to='login'>
+              <div className="sign-in__btn">Sign in</div>
+            </Link>
         }
 
       </div>

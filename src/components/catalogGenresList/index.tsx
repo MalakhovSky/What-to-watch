@@ -7,7 +7,7 @@ export const CatalogGenresList = ({films}) => {
   const dispatch = useAppDispatch()
 
   const [genres, setGenres] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
+  // const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const tempArray = new Set(films.map((film)=> film.genre))
@@ -24,6 +24,7 @@ export const CatalogGenresList = ({films}) => {
 
   const handleGenreChange = (item) =>{
     dispatch(setCurrentGenre(item))
+    // setIsClicked(!isClicked)
   }
 
 
@@ -35,7 +36,7 @@ export const CatalogGenresList = ({films}) => {
           </li>
           {
             genres.map((item)=>(
-              <li key={item} className="catalog__genres-item">
+              <li key={item} className="catalog__genres-item ">
                 <div onClick={(e)=>handleGenreChange(item)} className="catalog__genres-link">{item}</div>
               </li>
             ))

@@ -64,7 +64,7 @@ export const Film = () => {
                     localStorage.getItem('user') !== null ?
                       <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
                       :
-                      <Link to={`/login`} className="btn movie-card__button">Add review</Link>
+                      <Link to={'/login'} className="btn movie-card__button">Add review</Link>
                   }
 
                 </div>

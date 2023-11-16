@@ -1232,6 +1232,7 @@ main {
     border-color: #DFCF77; }
 
 .sign-in__btn {
+  text-decoration: none;
   display: block;
   width: 100%;
   padding: 24px 40px;
