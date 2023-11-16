@@ -6,7 +6,7 @@ import {Logo} from "../../components/logo";
 import {Avatar} from "../../components/avatar";
 import {films} from "../../mocks/films";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
-import {fetchFilms} from "../../redux/features/asyncActions";
+import {fetchCommentsPost, fetchFilms} from "../../redux/features/asyncActions";
 
 
 export const AddReview = props => {
@@ -22,8 +22,20 @@ export const AddReview = props => {
   const film = filmsData?.find((item)=>item.id === Number(id))
 
   const [starValue, setStarValue] = useState(0);
+  const [comment, setComment] = useState(0);
+
   const setRating = (e) =>{
     setStarValue(e.target.value)
+  }
+
+  const CommentChange = (e) =>{
+    setComment(e.target.value)
+  }
+
+  const handeAddReview = (id,starValue,comment) =>{
+    fetchCommentsPost({id,starValue,comment})
+    history.go(-1)
+
   }
 
   if(!film){
@@ -98,11 +110,20 @@ export const AddReview = props => {
             </div>
 
             <div className="add-review__text">
-              <textarea className="add-review__textarea" name="review-text" id="review-text"
+              <textarea onChange={CommentChange}   className="add-review__textarea" name="review-text" id="review-text"
                         placeholder="Review text"></textarea>
-              <div className="add-review__submit">
-                <button className="add-review__btn" type="submit">Post</button>
-              </div>
+
+                {/*//временно бтн*/}
+                {
+                  starValue && comment?
+                    <div className="add-review__submit">
+                    <div onClick={()=>handeAddReview(id,starValue,comment)} className="add-review__btn">Post</div>
+                  </div> :
+                    <div className="add-review__submit">
+                      <div disabled  className="add-review__btn">Post</div>
+                    </div>
+
+                }
 
             </div>
           </form>

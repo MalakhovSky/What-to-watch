@@ -1,37 +1,48 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
+import {Avatar} from "../avatar";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
+import {fetchPromo, getUser} from "../../redux/features/asyncActions";
+import {Link} from "react-router-dom";
 
 export const MovieHeader = () => {
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fetchPromo())
+  }, [dispatch]);
+
+
+
+
+
+  const promo = useAppSelector(state => state.promo.promo)
+  console.log(promo,'PROMOs')
   return (
     <section className="movie-card">
-      <MovieCardBg backImg='img/bg-the-grand-budapest-hotel.jpg'/>
+      <MovieCardBg backImg={promo?.background_image}/>
 
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-
         <Logo/>
+          <Avatar/>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" />
-          </div>
-        </div>
       </header>
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+            <img src={`${promo?.poster_image}`} alt="Promo poster" width="218"
                  height="327"/>
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{promo?.name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{promo?.genre}</span>
+              <span className="movie-card__year">{promo?.released}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -39,7 +50,7 @@ export const MovieHeader = () => {
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use href="#play-s"></use>
                 </svg>
-                <span>Play</span>
+                <Link to={`/player/${promo?.id}`} className="breadcrumbs__link"><span>Play</span></Link>
               </button>
               <button className="btn btn--list movie-card__button" type="button">
                 <svg viewBox="0 0 19 20" width="19" height="20">

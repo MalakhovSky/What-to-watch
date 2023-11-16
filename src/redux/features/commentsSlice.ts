@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
-import {fetchCommentsGet, fetchFilms, Film} from "./asyncActions";
+import {fetchCommentsGet, fetchCommentsPost, fetchFilms, Film} from "./asyncActions";
 import {Films} from "./filmsSlice";
 
 interface Comment {
@@ -45,6 +45,9 @@ export const CommentsSlice = createSlice({
       })
       .addCase(fetchCommentsGet.rejected, (state, action) => {
       })
+      // .addCase(fetchCommentsPost.fulfilled, (state, action) => {
+      //
+      // })
 
   },
 })

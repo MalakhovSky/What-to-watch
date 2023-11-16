@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {User} from "./userSlice";
 
 export type Film = {
   id:number,
@@ -51,5 +52,74 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
       });
 
     console.log(data,'Комменты')
+    return data
+  })
+
+
+
+export const fetchCommentsPost = async ({id,starValue,comment})=>{
+  await axios.post(`https://6.react.pages.academy/wtw/comments/${id}`,`"rating:"${starValue}, "comment":"${comment}"`)
+    .then(res =>{
+      console.log(res,'res')
+      return res
+
+    })
+    .catch(error=>{
+      return error
+    });
+}
+
+
+
+
+
+export const getUser = createAsyncThunk<User,undefined,{rejectValue:string}>(
+  'userSlice/getUsers',
+  async (_,{rejectWithValue}) =>{
+
+    const {data} = await axios.get('https://6.react.pages.academy/wtw/login')
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения пользователя',)
+      });
+
+    console.log(data,'Логин')
+    return data
+  })
+
+export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+  'commentsSlice/fetchCommentsGet',
+  async (signInData,{rejectWithValue}) =>{
+    console.log(signInData,'tutDataSing')
+
+    const {data} = await axios.post('https://6.react.pages.academy/wtw/login',signInData)
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения пользователя',)
+      });
+
+    console.log(data,'ЛогинPOST')
+    localStorage.setItem("user",JSON.stringify(data))
+    return data
+
+  })
+
+export const fetchPromo = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+  'promoSlice/fetchPromo',
+  async (_,{rejectWithValue}) =>{
+
+    const {data} = await axios.get('https://6.react.pages.academy/wtw/films/promo')
+      .then(res =>{
+        return res
+      })
+      .catch(error=>{
+        return rejectWithValue('Ошибка получения пользователя',)
+      });
+
+
     return data
   })
