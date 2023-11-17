@@ -5,6 +5,7 @@ import {Avatar} from "../avatar";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchPromo, getUser} from "../../redux/features/asyncActions";
 import {Link} from "react-router-dom";
+import {MyListBtn} from "../myListBtn";
 
 export const MovieHeader = () => {
 
@@ -52,12 +53,7 @@ export const MovieHeader = () => {
                 </svg>
                 <Link to={`/player/${promo?.id}`} className="breadcrumbs__link"><span>Play</span></Link>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use href="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <MyListBtn/>
             </div>
           </div>
         </div>
