@@ -5,6 +5,7 @@ import {INIT_GENRES} from "../../consts";
 
 export interface Films {
   films:Film[]
+  myFilms:Film[]
   currentGenre: string
   loading?:string
   error?:string
@@ -12,6 +13,7 @@ export interface Films {
 
 const initialState: Films = {
   currentGenre: INIT_GENRES,
+  myFilms:[],
   films:[],
   loading:'',
   error:''
@@ -24,6 +26,14 @@ export const filmsSlice = createSlice({
     setCurrentGenre: (state, action) => {
       state.currentGenre = action.payload
       console.log(state.currentGenre,'CURRENT GENRE')
+    },
+    addMyFilm:(state, action) => {
+      const isFilm = state.myFilms.find((obj) => obj.id === action.payload.id)
+      if(!isFilm){
+        state.myFilms.push(action.payload)
+      }
+
+      console.log(state.myFilms,'МОИ ФИЛЬМЕС')
     },
 
   },
@@ -43,6 +53,6 @@ export const filmsSlice = createSlice({
 })
 
 
-export const {setCurrentGenre,filteredGenres} = filmsSlice.actions
+export const {addMyFilm,setCurrentGenre,filteredGenres} = filmsSlice.actions
 
 export default filmsSlice.reducer

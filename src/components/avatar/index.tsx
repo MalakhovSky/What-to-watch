@@ -17,7 +17,8 @@ export const Avatar = () => {
       <div className="user-block">
         {
           localStorage.getItem('user') !== null || undefined ? <div className="user-block__avatar">
-            <img src={`${user?.avatar_url}`} alt="User avatar" width="63" height="63"/>
+            <Link to={'/myList'}> <img src={`${user?.avatar_url}`} alt="User avatar" width="63" height="63"/></Link>
+
           </div>
             :
             <Link  to='login'>
