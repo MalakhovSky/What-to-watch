@@ -9,6 +9,9 @@ import {Tabs} from "../../components/tabs";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchFilms} from "../../redux/features/asyncActions";
 import {Player} from "../player";
+import {MyList} from "../myList";
+import {MyListBtn} from "../../components/myListBtn";
+import {addMyFilm} from "../../redux/features/filmsSlice";
 
 export const Film = () => {
   const dispatch = useAppDispatch()
@@ -18,13 +21,12 @@ export const Film = () => {
   }, [dispatch]);
 
   const {id} = useParams()
-  const films = useAppSelector(state=>state.films.films)
+  const films = useAppSelector(state => state.films.films)
 
-  const film = films.find((item)=>item.id === Number(id))
+  const film = films.find((item) => item.id === Number(id))
 
 
-
-  if(film){
+  if (film) {
     return (
       <div>
         <section style={{backgroundColor: film?.background_color}} className="movie-card movie-card--full">
@@ -32,7 +34,7 @@ export const Film = () => {
             <MovieCardBg backImg={`${film.background_image}`}/>
 
 
-            <h1 className="visually-hidden">WTW</h1>
+            <h1 className="visually-hidden"> WTW</h1>
 
             <header className="page-header movie-card__head">
               <Logo/>
@@ -52,19 +54,16 @@ export const Film = () => {
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use href="#play-s"></use>
                     </svg>
-                   <Link to={`/player/${id}`} className="breadcrumbs__link"><span>Play</span></Link>
+                    <Link to={`/player/${id}`} className="breadcrumbs__link"><span>Play</span></Link>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use href="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
+                  <MyListBtn film={film}/>
                   {
                     localStorage.getItem('user') !== null ?
+
                       <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
                       :
                       <Link to={'/login'} className="btn movie-card__button">Add review</Link>
+
                   }
 
                 </div>
@@ -91,8 +90,8 @@ export const Film = () => {
         </div>
       </div>
     );
-  } else{
-   return <div>LOADING</div>
+  } else {
+    return <div>LOADING</div>
   }
 
 };

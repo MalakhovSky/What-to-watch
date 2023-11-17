@@ -25,7 +25,7 @@ export const CatalogGenresList = ({films}) => {
     setIsClicked(null)
   }
 
-  const handleGenreChange = (e,item,index) =>{
+  const handleGenreChange = (item,index) =>{
     dispatch(setCurrentGenre(item))
     setIsClicked(index)
   }
@@ -41,7 +41,7 @@ export const CatalogGenresList = ({films}) => {
           {
             genres.map((item,index)=>(
               <li key={item} className={isClicked === index?"catalog__genres-item catalog__genres-item--active":"catalog__genres-item"}>
-                <div  onClick={(e)=>handleGenreChange(e,item,index)}
+                <div  onClick={()=>handleGenreChange(item,index)}
                      className="catalog__genres-link">
                   {item}
                 </div>
