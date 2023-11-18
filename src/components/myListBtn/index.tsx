@@ -1,8 +1,13 @@
 import React from 'react';
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
 import {addMyFilm} from "../../redux/features/filmsSlice";
+import {Film} from "../../redux/features/asyncActions";
 
-export const MyListBtn = ({film}) => {
+type PropsType = {
+  film:Film;
+}
+
+export const MyListBtn = ({film}:PropsType) => {
 
   const dispatch = useAppDispatch()
 

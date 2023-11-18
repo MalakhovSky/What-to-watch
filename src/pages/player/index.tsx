@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchFilms} from "../../redux/features/asyncActions";
-import {useParams} from "react-router-dom";
 
-export const Player = () => {
+export const Player:React.FC = () => {
   const [isPlay, setIsPlay] = useState(false);
 
   const dispatch = useAppDispatch()
@@ -16,11 +16,8 @@ export const Player = () => {
   const filmsData = useAppSelector(state=>state.films.films)
 
   const film = filmsData.find((item)=>item.id === Number(id))
-  console.log(film,'film')
 
   const playerRef = useRef(null);
-  console.log(playerRef,'currn')
-
 
   const toggleVideo = () => {
     if(isPlay){
@@ -32,7 +29,6 @@ export const Player = () => {
   }
 
   const toggleScreen = () =>{
-
     playerRef.current.webkitEnterFullscreen()
   }
 
@@ -43,18 +39,18 @@ export const Player = () => {
 
     <div className="player">
       <video className="player__video" poster={film.poster_image} ref={playerRef}>
+        <track kind="captions" />
         <source src={film.video_link}
 
                 type="video/mp4"/>
       </video>
 
-      <button onClick={()=>history.go(-1)} type="button" className="player__exit">Exit</button>
+      <button onClick={()=>window.history.go(-1)} type="button" className="player__exit">Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value={2} max={film.run_time}></progress>
-            {/*<div className="player__toggler" style={{left:" 30%"}}>Toggler</div>*/}
+            <progress className="player__progress" value={2} max={film.run_time}/>
           </div>
           <div className="player__time-value">{`${filmTimeHours}:${(film.run_time)-60*filmTimeHours}`}</div>
         </div>
@@ -64,20 +60,19 @@ export const Player = () => {
                   type="button" className="player__play" >
             {
               !isPlay ? <svg viewBox="0 0 19 19" width="19" height="19">
-                <use href="#play-s"></use>
-              </svg>:<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"></polygon>
-                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"></polygon>
+                <use href="#play-s"/>
+              </svg>:<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"/>
+                <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"/>
               </g></svg>
-
             }
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
-
+          <div className="player__name">Trans potting</div>
           <button onClick={()=>toggleScreen()} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
-              <use href="#full-screen"></use>
+              <use href="#full-screen"/>
             </svg>
             <span>Full screen</span>
           </button>

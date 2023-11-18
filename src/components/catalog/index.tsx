@@ -4,10 +4,14 @@ import {CatalogMoviesList} from "../catalogMoviesList";
 import {ShowMoreBtn} from "../showMoreBtn";
 import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {INIT_GENRES} from "../../consts";
+import {Film} from "../../redux/features/asyncActions";
 
-export const Catalog = () => {
-// Вытащить текущий жанр из слайса
-  const films = useAppSelector(state => state.films.films)
+type PropsTypes = {
+  films:Film[]
+}
+
+export const Catalog: React.FC = ({films}:PropsTypes) => {
+
   const currentGenre = useAppSelector(state => state.films.currentGenre)
 
   return (

@@ -1,30 +1,25 @@
 import React, {FC, useEffect, useState} from 'react';
-import {reviews} from "../../mocks/reviews"
-import {films} from "../../mocks/films";
-import {Review} from "../review";
-import {Films} from "../../redux/features/filmsSlice";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
-import {fetchCommentsGet} from "../../redux/features/asyncActions";
 import {useParams} from "react-router-dom";
+import {Review} from "../review";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
+import {fetchCommentsGet, Film} from "../../redux/features/asyncActions";
 
 
 type TabsType = {
-  film: Films;
+  film: Film;
 }
 
 export const Tabs: FC<TabsType> = ({film}) => {
   const dispatch = useAppDispatch()
-  const commentsData = useAppSelector(state=>state.comments.comments)
+  const commentsData = useAppSelector(state => state.comments.comments)
 
   const {id} = useParams()
 
   useEffect(() => {
     dispatch(fetchCommentsGet(id))
-  }, [dispatch,id]);
-  console.log(commentsData,'COMMENTS')
+  }, [dispatch, id]);
 
   const [toggleState, SetToggleState] = useState(1);
-  const [rating, setRating] = useState('')
 
   const toggleTab = (index) => {
     SetToggleState(index)

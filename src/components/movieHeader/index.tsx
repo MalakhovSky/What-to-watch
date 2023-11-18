@@ -1,25 +1,20 @@
 import React, {useEffect} from 'react';
+import {Link} from "react-router-dom";
 import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
 import {Avatar} from "../avatar";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
-import {fetchPromo, getUser} from "../../redux/features/asyncActions";
-import {Link} from "react-router-dom";
+import {fetchPromo} from "../../redux/features/asyncActions";
 import {MyListBtn} from "../myListBtn";
 
-export const MovieHeader = () => {
+export const MovieHeader:React.FC = () => {
 
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchPromo())
   }, [dispatch]);
 
-
-
-
-
   const promo = useAppSelector(state => state.promo.promo)
-  console.log(promo,'PROMOs')
   return (
     <section className="movie-card">
       <MovieCardBg backImg={promo?.background_image}/>
@@ -53,7 +48,7 @@ export const MovieHeader = () => {
                 </svg>
                 <Link to={`/player/${promo?.id}`} className="breadcrumbs__link"><span>Play</span></Link>
               </button>
-              <MyListBtn/>
+              <MyListBtn film={promo}/>
             </div>
           </div>
         </div>
