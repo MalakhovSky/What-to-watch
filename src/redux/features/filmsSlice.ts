@@ -23,30 +23,24 @@ export const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
-    setCurrentGenre: (state, action) => {
+    setCurrentGenre: (state, action:PayloadAction<string>) => {
       state.currentGenre = action.payload
-      console.log(state.currentGenre,'CURRENT GENRE')
     },
-    addMyFilm:(state, action) => {
+    addMyFilm:(state, action:PayloadAction<Film>) => {
       const isFilm = state.myFilms.find((obj) => obj.id === action.payload.id)
       if(!isFilm){
         state.myFilms.push(action.payload)
       }
-
-      console.log(state.myFilms,'МОИ ФИЛЬМЕС')
     },
 
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFilms.pending, (state) => {
-      })
       .addCase(fetchFilms.fulfilled, (state, action:PayloadAction<Film[]>) => {
-        console.log(action.payload,"LEXA")
-        // state.films.push(action.payload)
         state.films = action.payload
       })
       .addCase(fetchFilms.rejected, (state, action) => {
+        console.log('ошибка получения фильмов')
       })
 
   },

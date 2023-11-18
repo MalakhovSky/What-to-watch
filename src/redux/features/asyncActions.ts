@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {User} from "./userSlice";
+import {Comments} from "./commentsSlice";
 
 export type Film = {
   id:number,
@@ -21,25 +22,25 @@ export type Film = {
   released:number,
   is_favorite:boolean,
 }
-// fetchFilms()
 
-export const fetchFilms = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+
+export const fetchFilms = createAsyncThunk<Film[],undefined>(
   'filmsSlice/fetchFilms',
-  async (_,{rejectWithValue}) =>{
+  async () =>{
 
   const {data} = await axios.get('https://6.react.pages.academy/wtw/films')
     .then(res =>{
       return res
     })
-    .catch(error=>{
-      return rejectWithValue('Ошибка получения общих данных',)
+    .catch((e)=>{
+      return e('Ошибка получения общих данных',)
     });
 
   return data
 
 })
 
-export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+export const fetchCommentsGet = createAsyncThunk<Comments,number>(
   'commentsSlice/fetchCommentsGet',
   async (filmId,{rejectWithValue}) =>{
 
@@ -47,11 +48,10 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
       .then(res =>{
         return res
       })
-      .catch(error=>{
+      .catch(()=>{
         return rejectWithValue('Ошибка получения комментариев',)
       });
 
-    console.log(data,'Комменты')
     return data
   })
 
@@ -60,7 +60,6 @@ export const fetchCommentsGet = createAsyncThunk<Film[],undefined,{rejectValue:s
 export const fetchCommentsPost = async ({id,starValue,comment})=>{
   await axios.post(`https://6.react.pages.academy/wtw/comments/${id}`,`"rating:"${starValue}, "comment":"${comment}"`)
     .then(res =>{
-      console.log(res,'res')
       return res
 
     })
@@ -73,51 +72,48 @@ export const fetchCommentsPost = async ({id,starValue,comment})=>{
 
 
 
-export const getUser = createAsyncThunk<User,undefined,{rejectValue:string}>(
+export const getUser = createAsyncThunk<User,undefined>(
   'userSlice/getUsers',
-  async (_,{rejectWithValue}) =>{
+  async (_) =>{
 
     const {data} = await axios.get('https://6.react.pages.academy/wtw/login')
       .then(res =>{
         return res
       })
-      .catch(error=>{
-        return rejectWithValue('Ошибка получения пользователя',)
+      .catch((e)=>{
+        return e('Ошибка получения пользователя',)
       });
 
-    console.log(data,'Логин')
     return data
   })
 
-export const postUsers = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
-  'commentsSlice/fetchCommentsGet',
-  async (signInData,{rejectWithValue}) =>{
-    console.log(signInData,'tutDataSing')
+export const postUser = createAsyncThunk<User,{"email":string,"password":string}>(
+  'userSlice/postUsers',
+  async (signInData) =>{
 
     const {data} = await axios.post('https://6.react.pages.academy/wtw/login',signInData)
       .then(res =>{
         return res
       })
-      .catch(error=>{
-        return rejectWithValue('Ошибка получения пользователя',)
+      .catch((e)=>{
+        return e('Ошибка отправки пользователя',)
       });
 
-    console.log(data,'ЛогинPOST')
     localStorage.setItem("user",JSON.stringify(data))
     return data
 
   })
 
-export const fetchPromo = createAsyncThunk<Film[],undefined,{rejectValue:string}>(
+export const fetchPromo = createAsyncThunk<Film,undefined>(
   'promoSlice/fetchPromo',
-  async (_,{rejectWithValue}) =>{
+  async (_) =>{
 
     const {data} = await axios.get('https://6.react.pages.academy/wtw/films/promo')
       .then(res =>{
         return res
       })
-      .catch(error=>{
-        return rejectWithValue('Ошибка получения пользователя',)
+      .catch((e)=>{
+        return e('Ошибка получения промо',)
       });
 
 

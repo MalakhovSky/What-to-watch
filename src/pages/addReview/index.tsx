@@ -17,11 +17,11 @@ export const AddReview:React.FC = () => {
   }, [dispatch]);
 
   const filmsData = useAppSelector(state=>state.films.films)
-  const {id} = useParams()
+  const {id}:number = useParams()
   const film = filmsData?.find((item)=>item.id === Number(id))
 
-  const [starValue, setStarValue] = useState(0);
-  const [comment, setComment] = useState(0);
+  const [starValue, setStarValue] = useState<number>(0);
+  const [comment, setComment] = useState<string>('');
 
   const setRating = (e) =>{
     setStarValue(e.target.value)
@@ -31,7 +31,7 @@ export const AddReview:React.FC = () => {
     setComment(e.target.value)
   }
 
-  const handeAddReview = (id,starValue,comment) =>{
+  const handeAddReview = (id,starValue,comment):void =>{
     fetchCommentsPost({id,starValue,comment})
     window.history.go(-1)
 

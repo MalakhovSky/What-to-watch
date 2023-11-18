@@ -18,10 +18,8 @@ export const CatalogGenresList: React.FC = ({films}:PropsType) => {
   useEffect(() => {
     const tempArray = new Set(films.map((film)=> film.genre))
      setGenres([...tempArray]);
-    console.log(tempArray,'tempArray')
-  }, [films]);
 
-  console.log(genres,'GENRES')
+  }, [films]);
 
 
   const allGenres = () =>{

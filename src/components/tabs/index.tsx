@@ -13,7 +13,8 @@ export const Tabs: FC<TabsType> = ({film}) => {
   const dispatch = useAppDispatch()
   const commentsData = useAppSelector(state => state.comments.comments)
 
-  const {id} = useParams()
+  const {id}:number = useParams()
+
 
   useEffect(() => {
     dispatch(fetchCommentsGet(id))
@@ -80,7 +81,7 @@ export const Tabs: FC<TabsType> = ({film}) => {
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Starring</strong>
               <span className="movie-card__details-value">
-              {film.starring.map((star) => (<>{star}<br/></>))}
+              {film.starring.map((star) => (<React.Fragment key={star}>{star}<br/></React.Fragment>))}
             </span>
             </p>
           </div>

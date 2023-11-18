@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {Logo} from "../../components/logo";
-import {postUsers} from "../../redux/features/asyncActions";
+import {postUser} from "../../redux/features/asyncActions";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
 import {PageFooter} from "../../components/pageFooter";
 
@@ -19,7 +19,7 @@ export const SignIn: React.FC = () => {
   }
 
   const submitSingIn = () => {
-    dispatch(postUsers({"email": `${email}`, "password": `${password}`}))
+    dispatch(postUser({"email": `${email}`, "password": `${password}`}))
   }
 
   return (
@@ -55,6 +55,5 @@ export const SignIn: React.FC = () => {
   );
 };
 
-SignIn.propTypes = {};
 
 

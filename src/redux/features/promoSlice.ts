@@ -18,24 +18,23 @@ export const promoSlice = createSlice({
   name: 'promo',
   initialState,
   reducers: {
-    increment: (state, action) => {
-      state.promo.push(action.payload)
+    setPromo: () => {
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPromo.pending, (state) => {
       })
-      .addCase(fetchPromo.fulfilled, (state, action:PayloadAction<Film[]>) => {
+      .addCase(fetchPromo.fulfilled, (state, action:PayloadAction<Film>) => {
         state.promo = action.payload
       })
       .addCase(fetchPromo.rejected, (state, action) => {
+        console.log('Ошибка получения промо фильма')
       })
 
   },
 })
 
 
-export const {increment,} = promoSlice.actions
 
 export default promoSlice.reducer
