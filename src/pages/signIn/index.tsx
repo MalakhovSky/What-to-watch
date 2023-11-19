@@ -4,6 +4,7 @@ import {Logo} from "../../components/logo";
 import {postUser} from "../../redux/features/asyncActions";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
 import {PageFooter} from "../../components/pageFooter";
+import {isLogged} from "../../redux/features/userSlice";
 
 export const SignIn: React.FC = () => {
   const dispatch = useAppDispatch()

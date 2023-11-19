@@ -42,14 +42,14 @@ export const fetchFilms = createAsyncThunk<Film[],undefined>(
 
 export const fetchCommentsGet = createAsyncThunk<Comments,number>(
   'commentsSlice/fetchCommentsGet',
-  async (filmId,{rejectWithValue}) =>{
+  async (filmId) =>{
 
     const {data} = await axios.get(`https://6.react.pages.academy/wtw/comments/${filmId}`)
       .then(res =>{
         return res
       })
-      .catch(()=>{
-        return rejectWithValue('Ошибка получения комментариев',)
+      .catch((e)=>{
+        return e('Ошибка получения комментариев',)
       });
 
     return data
@@ -67,9 +67,6 @@ export const fetchCommentsPost = async ({id,starValue,comment})=>{
       return error
     });
 }
-
-
-
 
 
 export const getUser = createAsyncThunk<User,undefined>(

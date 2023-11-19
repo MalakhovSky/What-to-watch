@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {getUser, postUser} from "./asyncActions";
+import {filmsSlice} from "./filmsSlice";
 
 export type User = {
   email: string
@@ -30,14 +31,15 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    addUsers: () => {
+    isLogged: (state, action:PayloadAction<boolean>) => {
+      state.isLogged = action.payload
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(postUser.fulfilled, (state, action:PayloadAction<User>) => {
         state.user = action.payload;
-        state.isLogged = true;
+        console.log(state.user,'user')
 
       })
       .addCase(postUser.rejected, () => {
@@ -47,6 +49,5 @@ export const userSlice = createSlice({
 
   },
 })
-
-
+export const {isLogged} = userSlice.actions
 export default userSlice.reducer

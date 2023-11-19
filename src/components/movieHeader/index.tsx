@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
@@ -10,11 +10,14 @@ import {MyListBtn} from "../myListBtn";
 export const MovieHeader:React.FC = () => {
 
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     dispatch(fetchPromo())
   }, [dispatch]);
 
+
   const promo = useAppSelector(state => state.promo.promo)
+
   return (
     <section className="movie-card">
       <MovieCardBg backImg={promo?.background_image}/>
