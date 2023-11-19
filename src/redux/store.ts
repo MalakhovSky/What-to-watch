@@ -25,6 +25,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist:['users','films']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
