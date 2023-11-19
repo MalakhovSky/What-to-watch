@@ -10,6 +10,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchFilms} from "../../redux/features/asyncActions";
 import {MyListBtn} from "../../components/myListBtn";
 
+
 export const Film: React.FC = () => {
   const dispatch = useAppDispatch()
 
@@ -18,7 +19,7 @@ export const Film: React.FC = () => {
   }, [dispatch]);
 
   const {id} = useParams()
-  const films = useAppSelector(state => state.films.films)
+  const films = useAppSelector((state) => state.films.films)
 
   const film = films.find((item) => item.id === Number(id))
 

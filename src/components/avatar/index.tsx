@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
@@ -7,7 +7,7 @@ export const Avatar: React.FC = () => {
 
 
   const user = useAppSelector(state => state.users.user)
-  console.log(user,'NAME')
+
 
     return (
       <div className="user-block">

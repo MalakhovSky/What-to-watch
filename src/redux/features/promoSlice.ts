@@ -23,12 +23,12 @@ export const promoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPromo.pending, (state) => {
+      .addCase(fetchPromo.pending, () => {
       })
-      .addCase(fetchPromo.fulfilled, (state, action:PayloadAction<Film>) => {
+      .addCase(fetchPromo.fulfilled, (state:Film, action:PayloadAction<Film>) => {
         state.promo = action.payload
       })
-      .addCase(fetchPromo.rejected, (state, action) => {
+      .addCase(fetchPromo.rejected, () => {
         console.log('Ошибка получения промо фильма')
       })
 

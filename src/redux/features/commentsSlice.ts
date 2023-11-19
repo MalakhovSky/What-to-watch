@@ -1,28 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
-import {fetchCommentsGet, fetchCommentsPost, fetchFilms, Film} from "./asyncActions";
-import {Films} from "./filmsSlice";
+import {fetchCommentsGet} from "./asyncActions";
 
-interface Comment {
-  id: number
+
+type Comment = {
+  id: number,
   user: {
-    id: number
+    id: number,
     name: string
   }
-  rating: number
-  comment: string
+  rating: number,
+  comment: string,
   date: string
 }
 
 export type Comments = {
   comments: Comment[]
-  loading?: string
-  error?: string
 }
 const initialState: Comments = {
   comments:[],
-  loading:'',
-  error:''
 }
 
 
@@ -36,7 +32,7 @@ export const CommentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(fetchCommentsGet.fulfilled, (state, action: PayloadAction<Comments>) => {
+      .addCase(fetchCommentsGet.fulfilled, (state:Comments, action: PayloadAction<Comments>) => {
         state.comments = action.payload
       })
       .addCase(fetchCommentsGet.rejected, () => {

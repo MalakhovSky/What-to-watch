@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
-import {fetchFilms, Film} from "../../redux/features/asyncActions";
-import {filteredGenres, setCurrentGenre} from "../../redux/features/filmsSlice";
+import {Film} from "../../redux/features/asyncActions";
+import {setCurrentGenre} from "../../redux/features/filmsSlice";
 import {INIT_GENRES} from "../../consts";
 
 type PropsType={
