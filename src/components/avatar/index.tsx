@@ -5,22 +5,14 @@ import {useAppSelector} from "../../redux/hooks/useAppDispatch";
 
 export const Avatar: React.FC = () => {
 
-  const [user, setUser] = useState(null);
 
+  const user = useAppSelector(state => state.users.user)
+  console.log(user,'NAME')
 
-  useEffect(() => {
-    setUser(localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user'))
-      : {})
-  }, []);
-
-  const name = useAppSelector(state => state.users.user)
-  console.log(name,'NAME')
     return (
       <div className="user-block">
         {
-          localStorage.getItem('user') != null
-            ?
+          user?
             <div className="user-block__avatar">
               <Link to='/myList'> <img src={`${user?.avatar_url}`} alt="User avatar" width="63" height="63"/></Link>
             </div>

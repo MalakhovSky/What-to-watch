@@ -96,7 +96,7 @@ export const postUser = createAsyncThunk<User,{"email":string,"password":string}
         return e('Ошибка отправки пользователя',)
       });
 
-    localStorage.setItem("user",JSON.stringify(data))
+    // localStorage.setItem("user",JSON.stringify(data))
     return data
 
   })
