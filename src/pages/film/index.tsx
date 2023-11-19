@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {MovieCardBg} from "../../components/movieCardBg";
 import {Logo} from "../../components/logo";
@@ -8,12 +8,9 @@ import {PageFooter} from "../../components/pageFooter";
 import {Tabs} from "../../components/tabs";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/useAppDispatch";
 import {fetchFilms} from "../../redux/features/asyncActions";
-import {Player} from "../player";
-import {MyList} from "../myList";
 import {MyListBtn} from "../../components/myListBtn";
-import {addMyFilm} from "../../redux/features/filmsSlice";
 
-export const Film = () => {
+export const Film: React.FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -32,15 +29,11 @@ export const Film = () => {
         <section style={{backgroundColor: film?.background_color}} className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <MovieCardBg backImg={`${film.background_image}`}/>
-
-
             <h1 className="visually-hidden"> WTW</h1>
-
             <header className="page-header movie-card__head">
               <Logo/>
               <Avatar/>
             </header>
-
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
                 <h2 className="movie-card__title">{film.name}</h2>
@@ -48,22 +41,19 @@ export const Film = () => {
                   <span className="movie-card__genre">{film.genre}</span>
                   <span className="movie-card__year">{film.released}</span>
                 </p>
-
                 <div className="movie-card__buttons">
                   <button className="btn btn--play movie-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use href="#play-s"></use>
+                      <use href="#play-s"/>
                     </svg>
                     <Link to={`/player/${id}`} className="breadcrumbs__link"><span>Play</span></Link>
                   </button>
                   <MyListBtn film={film}/>
                   {
                     localStorage.getItem('user') !== null ?
-
                       <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
                       :
-                      <Link to={'/login'} className="btn movie-card__button">Add review</Link>
-
+                      <Link to='/login' className="btn movie-card__button">Add review</Link>
                   }
 
                 </div>
@@ -77,7 +67,6 @@ export const Film = () => {
                 <img src={`${film.poster_image}`} alt={`${film.name}`} width="218"
                      height="327"/>
               </div>
-
               <Tabs film={film}/>
             </div>
           </div>
@@ -90,8 +79,8 @@ export const Film = () => {
         </div>
       </div>
     );
-  } else {
-    return <div>LOADING</div>
   }
+  return <div>LOADING</div>
+
 
 };

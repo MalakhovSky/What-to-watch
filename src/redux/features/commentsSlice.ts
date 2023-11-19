@@ -14,7 +14,7 @@ interface Comment {
   date: string
 }
 
-export interface Comments {
+export type Comments = {
   comments: Comment[]
   loading?: string
   error?: string
@@ -30,29 +30,23 @@ export const CommentsSlice = createSlice({
   name: 'comments',
   initialState,
   reducers: {
-    increment: (state, action) => {
-      state.comments.push(action.payload)
+    increment: () => {
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCommentsGet.pending, (state) => {
-      })
-      .addCase(fetchCommentsGet.fulfilled, (state, action: PayloadAction<Film[]>) => {
-        console.log(action.payload, "LEXA")
-        // state.films.push(action.payload)
+
+      .addCase(fetchCommentsGet.fulfilled, (state, action: PayloadAction<Comments>) => {
         state.comments = action.payload
       })
-      .addCase(fetchCommentsGet.rejected, (state, action) => {
+      .addCase(fetchCommentsGet.rejected, () => {
+        console.log(('Ошибка получения коментариев'))
       })
-      // .addCase(fetchCommentsPost.fulfilled, (state, action) => {
-      //
-      // })
+
 
   },
 })
 
 
-export const {increment,} = CommentsSlice.actions
 
 export default CommentsSlice.reducer

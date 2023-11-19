@@ -1,10 +1,14 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
-import {fetchFilms} from "../../redux/features/asyncActions";
+import {fetchFilms, Film} from "../../redux/features/asyncActions";
 import {filteredGenres, setCurrentGenre} from "../../redux/features/filmsSlice";
 import {INIT_GENRES} from "../../consts";
 
-export const CatalogGenresList = ({films}) => {
+type PropsType={
+  films:Film[]
+}
+
+export const CatalogGenresList: React.FC = ({films}:PropsType) => {
   const dispatch = useAppDispatch()
 
 
@@ -14,10 +18,8 @@ export const CatalogGenresList = ({films}) => {
   useEffect(() => {
     const tempArray = new Set(films.map((film)=> film.genre))
      setGenres([...tempArray]);
-    console.log(tempArray,'tempArray')
-  }, [films]);
 
-  console.log(genres,'GENRES')
+  }, [films]);
 
 
   const allGenres = () =>{

@@ -8,12 +8,10 @@ type PropsType = {
   films: Film[]
 }
 
-export const CatalogMoviesList = ({films}: PropsType) => {
-
+export const CatalogMoviesList: React.FC = ({films}: PropsType) => {
+  const [counter, setCounter] = useState<number>(INIT_FILMS_COUNTER);
   if (films) {
-    const [counter, setCounter] = useState(INIT_FILMS_COUNTER);
     const renderFilms = films.slice(0, counter);
-
 
     const moreFilms = () => {
       setCounter(prevState => prevState + 8)
@@ -32,15 +30,12 @@ export const CatalogMoviesList = ({films}: PropsType) => {
 
         </div>
         {
-          renderFilms.length === films.length ? <div></div> :
+          renderFilms.length === films.length ? <div> </div> :
             <div onClick={() => moreFilms()}>
               <ShowMoreBtn/>
             </div>
         }
-
-
       </div>
-
     );
   }
 
