@@ -15,16 +15,11 @@ export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) 
 
   const playVideo = () => {
     playerRef.current.play()
+
   }
   const pauseVideo =()=>{
-    if(playerRef.current.play() !== undefined){
-      playerRef.current.play().then((_ => {
         playerRef.current.load()
-      })).catch(e=>{
-        console.log(e,'Ошибка видео с карточки')
-      })
 
-    }
 
   }
 
