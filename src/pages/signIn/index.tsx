@@ -4,7 +4,7 @@ import {Logo} from "../../components/logo";
 import {postUser} from "../../redux/features/asyncActions";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
 import {PageFooter} from "../../components/pageFooter";
-import {isLogged} from "../../redux/features/userSlice";
+
 
 export const SignIn: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -33,19 +33,19 @@ export const SignIn: React.FC = () => {
         <form action="#" className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email"
+              <input data-cy='email' className="sign-in__input" type="email" placeholder="Email address" name="user-email"
                      id="user-email" onChange={emailChange} value={email}/>
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input className="sign-in__input" type="password" placeholder="Password" name="user-password"
+              <input data-cy='password' className="sign-in__input" type="password" placeholder="Password" name="user-password"
                      id="user-password" onChange={passwordChange} value={password}/>
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
           <div className="sign-in__submit">
             <Link to='/'>
-              <div className="sign-in__btn" onClick={submitSingIn}>Sign in</div>
+              <div data-cy="button" className="sign-in__btn" onClick={submitSingIn}>Sign in</div>
             </Link>
 
           </div>

@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+//    "module": "ESNext",
     "noImplicitAny": true,
     "allowJs": true,
     "strict": true,
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es6",
     "jsx": "react-jsx",
     "preserveConstEnums": true,
     "outFile": "../../built/local/tsc.js",
-    "sourceMap": true,
+//    "sourceMap": true,
     "esModuleInterop": true,
     "lib": [
       "decorators",
@@ -22,7 +22,8 @@
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
-    }
+    },
+
   },
   "include": [
     "./src/**/*.ts",
