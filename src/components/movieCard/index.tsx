@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Link} from "react-router-dom";
 
 
@@ -11,12 +11,21 @@ type PropsType = {
 
 export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) => {
   const playerRef = useRef(null);
+
+
   const playVideo = () => {
     playerRef.current.play()
-
   }
   const pauseVideo =()=>{
-    playerRef.current.load()
+    if(playerRef.current.play() !== undefined){
+      playerRef.current.play().then((_ => {
+        playerRef.current.load()
+      })).catch(e=>{
+        console.log(e,'Ошибка видео с карточки')
+      })
+
+    }
+
   }
 
 
