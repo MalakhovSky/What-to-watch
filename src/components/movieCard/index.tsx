@@ -26,7 +26,7 @@ export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) 
 
   return (
 
-    <div className="small-movie-card catalog__movies-card">
+    <div data-cy="card"  className="small-movie-card catalog__movies-card">
       <article style={{width: 280}}>
         <Link to={`/films/${id}`}>
           <div  className="small-movie-card__image"
