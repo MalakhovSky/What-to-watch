@@ -18,6 +18,7 @@ export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) 
 
   }
   const pauseVideo =()=>{
+    if(playerRef.current.readyState === 4 )
         playerRef.current.load()
 
 
@@ -30,10 +31,11 @@ export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) 
       <article style={{width: 280}}>
         <Link to={`/films/${id}`}>
           <div  className="small-movie-card__image"
-               onMouseOver={() => playVideo()} onFocus={() => playVideo()}
+               onMouseEnter={() => playVideo()} onFocus={() => playVideo()}
                onMouseOut={()=>pauseVideo()} onBlur={()=>playVideo()}
           >
             <video
+              loop
               style={{width: 300}}
               ref={playerRef}
               poster={`${prevImage}`}
