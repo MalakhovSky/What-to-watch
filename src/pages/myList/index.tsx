@@ -31,7 +31,7 @@ export const MyList = () => {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <CatalogGenresList films={films}/>
+        <CatalogGenresList films={myFilms}/>
         <CatalogMoviesList
           films={currentGenre === INIT_GENRES ?
             myFilms

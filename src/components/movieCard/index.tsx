@@ -14,16 +14,12 @@ export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) 
 
 
   const playVideo = () => {
-    playerRef.current.play()
-
+    if(playerRef.current.readyState === 4 )  playerRef.current.play()
   }
+
   const pauseVideo =()=>{
-    if(playerRef.current.readyState === 4 )
-        playerRef.current.load()
-
-
+    playerRef.current.load()
   }
-
 
   return (
 

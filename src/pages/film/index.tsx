@@ -20,6 +20,7 @@ export const Film: React.FC = () => {
 
   const {id} = useParams()
   const films = useAppSelector((state) => state.films.films)
+  const user = useAppSelector(state => state.users.user)
 
   const film = films.find((item) => item.id === Number(id))
 
@@ -51,7 +52,7 @@ export const Film: React.FC = () => {
                   </button>
                   <MyListBtn film={film}/>
                   {
-                    localStorage.getItem('user') !== null ?
+                    user ?
                       <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
                       :
                       <Link to='/login' className="btn movie-card__button">Add review</Link>

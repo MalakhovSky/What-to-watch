@@ -31,9 +31,9 @@ export const AddReview:React.FC = () => {
     setComment(e.target.value)
   }
 
-  const handeAddReview = (id,starValue,comment):void =>{
+  const handeAddReview = async (id,starValue,comment)=>{
     fetchCommentsPost({id,starValue,comment})
-    window.history.go(-1)
+    await window.history.go(-1)
 
   }
 

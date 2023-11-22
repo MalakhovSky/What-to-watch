@@ -1,11 +1,12 @@
 describe('Log in and add film',()=>{
   it("Sign in and check films logic",()=>{
-    cy.visit("http://localhost:3000/login")
-    cy.get('[data-cy="email"]').should('have.text','')
-    cy.get('[data-cy="password"]').should('have.text','')
-    cy.get('[data-cy="email"]').type('abc@gmail.com')
-    cy.get('[data-cy="password"]').type('123')
-    cy.get('[data-cy="button"]').click()
+    // cy.visit("http://localhost:3000/login")
+    // cy.get('[data-cy="email"]').should('have.text','')
+    // cy.get('[data-cy="password"]').should('have.text','')
+    // cy.get('[data-cy="email"]').type('abc@gmail.com')
+    // cy.get('[data-cy="password"]').type('123')
+    // cy.get('[data-cy="button"]').click()
+   cy.login()
 
     cy.get('[data-cy="card"]').should('have.length', 8)
     for(let i = 0; i < 3;i++){

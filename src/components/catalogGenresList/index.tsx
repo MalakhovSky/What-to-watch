@@ -37,7 +37,7 @@ export const CatalogGenresList: React.FC = ({films}:PropsType) => {
   return (
      <div>
           <ul className="catalog__genres-list" >
-          <li className={isClicked?"catalog__genres-item":"catalog__genres-item catalog__genres-item--active"}>
+          <li className={(isClicked === null) ? "catalog__genres-item catalog__genres-item--active":"catalog__genres-item"}>
             <div onClick={()=>allGenres()} className="catalog__genres-link">All genres</div>
           </li>
           {

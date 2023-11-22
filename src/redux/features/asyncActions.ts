@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {User} from "./userSlice";
 import {Comments} from "./commentsSlice";
+import api from "./api";
 
 export type Film = {
   id:number,
@@ -28,7 +29,7 @@ export const fetchFilms = createAsyncThunk<Film[],undefined>(
   'filmsSlice/fetchFilms',
   async () =>{
 
-  const {data} = await axios.get('https://6.react.pages.academy/wtw/films')
+  const {data} = await api.get('films')
     .then(res =>{
       return res
     })
@@ -44,7 +45,7 @@ export const fetchCommentsGet = createAsyncThunk<Comments,number>(
   'commentsSlice/fetchCommentsGet',
   async (filmId) =>{
 
-    const {data} = await axios.get(`https://6.react.pages.academy/wtw/comments/${filmId}`)
+    const {data} = await api.get(`comments/${filmId}`)
       .then(res =>{
         return res
       })
@@ -58,7 +59,8 @@ export const fetchCommentsGet = createAsyncThunk<Comments,number>(
 
 
 export const fetchCommentsPost = async ({id,starValue,comment})=>{
-  await axios.post(`https://6.react.pages.academy/wtw/comments/${id}`,`"rating:"${starValue}, "comment":"${comment}"`)
+  console.log('FETCH')
+  await api.post(`comments/${id}`,`"rating:"${starValue}, "comment":"${comment}"`)
     .then(res =>{
       return res
 
@@ -73,7 +75,7 @@ export const getUser = createAsyncThunk<User,undefined>(
   'userSlice/getUsers',
   async (_) =>{
 
-    const {data} = await axios.get('https://6.react.pages.academy/wtw/login')
+    const {data} = await api.get('login')
       .then(res =>{
         return res
       })
@@ -88,15 +90,18 @@ export const postUser = createAsyncThunk<User,{"email":string,"password":string}
   'userSlice/postUsers',
   async (signInData) =>{
 
-    const {data} = await axios.post('https://6.react.pages.academy/wtw/login',signInData)
+    const {data} = await api.post('login',signInData,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      }
+    })
       .then(res =>{
         return res
       })
       .catch((e)=>{
         return e('Ошибка отправки пользователя',)
       });
-
-    // localStorage.setItem("user",JSON.stringify(data))
     return data
 
   })
@@ -105,7 +110,7 @@ export const fetchPromo = createAsyncThunk<Film,undefined>(
   'promoSlice/fetchPromo',
   async (_) =>{
 
-    const {data} = await axios.get('https://6.react.pages.academy/wtw/films/promo')
+    const {data} = await api.get('films/promo')
       .then(res =>{
         return res
       })
