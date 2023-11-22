@@ -68,8 +68,8 @@ export const AddReview:React.FC = () => {
               <div  className="rating">
                 <div  onChange={(e)=>setRating(e)} className="rating__stars" >
 
-                  <label className="rating__label" htmlFor="star-1">Rating 1</label>
-                  <input  className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
+                  <label data-cy="star"  className="rating__label" htmlFor="star-1">Rating 1</label>
+                  <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
 
 
                   <input  className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
@@ -102,16 +102,16 @@ export const AddReview:React.FC = () => {
               </div>
 
               <div className="add-review__text">
-              <textarea onChange={CommentChange}   className="add-review__textarea" name="review-text" id="review-text"
+              <textarea data-cy="textArea" onChange={CommentChange}   className="add-review__textarea" name="review-text" id="review-text"
                         placeholder="Review text"/>
 
                 {
                   starValue && comment?
                     <div className="add-review__submit">
-                      <div onClick={()=>handeAddReview(id,starValue,comment)} className="add-review__btn">Post</div>
+                      <div data-cy="post" onClick={()=>handeAddReview(id,starValue,comment)} className="add-review__btn">Post</div>
                     </div> :
                     <div className="add-review__submit">
-                      <div   className="add-review__btn">Post</div>
+                      <button data-cy="post" className="add-review__btn" disabled>Post</button>
                     </div>
                 }
               </div>

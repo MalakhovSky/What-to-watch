@@ -45,7 +45,7 @@ export const Player:React.FC = () => {
                 type="video/mp4"/>
       </video>
 
-      <button onClick={()=>window.history.go(-1)} type="button" className="player__exit">Exit</button>
+      <button data-cy="exit" onClick={()=>window.history.go(-1)} type="button" className="player__exit">Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -56,7 +56,7 @@ export const Player:React.FC = () => {
         </div>
 
         <div className="player__controls-row">
-          <button onClick={()=>toggleVideo()}
+          <button data-cy="play" onClick={()=>toggleVideo()}
                   type="button" className="player__play" >
             {
               !isPlay ? <svg viewBox="0 0 19 19" width="19" height="19">
@@ -70,7 +70,7 @@ export const Player:React.FC = () => {
             <span>Play</span>
           </button>
           <div className="player__name">Trans potting</div>
-          <button onClick={()=>toggleScreen()} type="button" className="player__full-screen">
+          <button data-cy="fullScreen" onClick={()=>toggleScreen()} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use href="#full-screen"/>
             </svg>

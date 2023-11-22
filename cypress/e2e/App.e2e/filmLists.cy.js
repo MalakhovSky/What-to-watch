@@ -1,11 +1,5 @@
-describe('Log in and add film',()=>{
-  it("Sign in and check films logic",()=>{
-    // cy.visit("http://localhost:3000/login")
-    // cy.get('[data-cy="email"]').should('have.text','')
-    // cy.get('[data-cy="password"]').should('have.text','')
-    // cy.get('[data-cy="email"]').type('abc@gmail.com')
-    // cy.get('[data-cy="password"]').type('123')
-    // cy.get('[data-cy="button"]').click()
+describe('films',()=>{
+  it("показать все фильмы и добавить в список избранных",()=>{
    cy.login()
 
     cy.get('[data-cy="card"]').should('have.length', 8)
@@ -22,5 +16,29 @@ describe('Log in and add film',()=>{
     cy.get('[data-cy="card"]').should('have.length', 1)
 
   })
+  it("Отправка отзыва",()=>{
+      cy.login()
+      cy.get('[data-cy="card"]').first().click()
+      cy.scrollTo(0, 100)
+      cy.get('[data-cy="review"]').click()
+      cy.get('[data-cy="post"]').should('be.disabled')
+      cy.get('[data-cy="star"]').click()
+      cy.get('[data-cy="textArea"]').type('some text')
+      cy.get('[data-cy="post"]').click()
+    })
+
+  it("Запуск плеера",()=>{
+    cy.login()
+    cy.get('[data-cy="card"]').first().click()
+    cy.scrollTo(0, 100)
+    cy.get('[data-cy="play"]').click()
+    cy.get('[data-cy="play"]').click()
+    cy.get('[data-cy="fullScreen"]').click()
+    cy.wait(2000)
+    cy.get('[data-cy="exit"]').click()
+
+  })
+
+
 })
 

@@ -44,7 +44,7 @@ export const Film: React.FC = () => {
                   <span className="movie-card__year">{film.released}</span>
                 </p>
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button data-cy="play" className="btn btn--play movie-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use href="#play-s"/>
                     </svg>
@@ -53,9 +53,9 @@ export const Film: React.FC = () => {
                   <MyListBtn film={film}/>
                   {
                     user ?
-                      <Link to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
+                      <Link data-cy="review" to={`/films/review/${id}`} className="btn movie-card__button">Add review</Link>
                       :
-                      <Link to='/login' className="btn movie-card__button">Add review</Link>
+                      <Link data-cy="review" to='/login' className="btn movie-card__button">Add review</Link>
                   }
 
                 </div>
