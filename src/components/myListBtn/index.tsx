@@ -12,7 +12,7 @@ export const MyListBtn = ({film}:PropsType) => {
   const dispatch = useAppDispatch()
 
   return (
-      <button onClick = {()=>dispatch(addMyFilm(film))} className="btn btn--list movie-card__button" type="button">
+      <button data-cy="myListBtn" onClick = {()=>dispatch(addMyFilm(film))} className="btn btn--list movie-card__button" type="button">
         <svg viewBox="0 0 19 20" width="19" height="20">
           <use href="#add"></use>
         </svg>

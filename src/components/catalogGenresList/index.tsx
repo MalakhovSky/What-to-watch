@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch";
-import {fetchFilms, Film} from "../../redux/features/asyncActions";
-import {filteredGenres, setCurrentGenre} from "../../redux/features/filmsSlice";
+import {Film} from "../../redux/features/asyncActions";
+import {setCurrentGenre} from "../../redux/features/filmsSlice";
 import {INIT_GENRES} from "../../consts";
 
 type PropsType={
@@ -37,13 +37,13 @@ export const CatalogGenresList: React.FC = ({films}:PropsType) => {
   return (
      <div>
           <ul className="catalog__genres-list" >
-          <li className={isClicked?"catalog__genres-item":"catalog__genres-item catalog__genres-item--active"}>
+          <li className={(isClicked === null) ? "catalog__genres-item catalog__genres-item--active":"catalog__genres-item"}>
             <div onClick={()=>allGenres()} className="catalog__genres-link">All genres</div>
           </li>
           {
             genres.map((item,index)=>(
               <li key={item} className={isClicked === index?"catalog__genres-item catalog__genres-item--active":"catalog__genres-item"}>
-                <div  onClick={()=>handleGenreChange(item,index)}
+                <div data-cy="genre" onClick={()=>handleGenreChange(item,index)}
                      className="catalog__genres-link">
                   {item}
                 </div>

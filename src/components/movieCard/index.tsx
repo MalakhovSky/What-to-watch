@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Link} from "react-router-dom";
 
 
@@ -11,25 +11,27 @@ type PropsType = {
 
 export const MovieCard:React.FC = ({name, prevImage, id, prevVideo}: PropsType) => {
   const playerRef = useRef(null);
-  const playVideo = () => {
-    playerRef.current.play()
 
+
+  const playVideo = () => {
+    if(playerRef.current.readyState === 4 )  playerRef.current.play()
   }
+
   const pauseVideo =()=>{
     playerRef.current.load()
   }
 
-
   return (
 
-    <div className="small-movie-card catalog__movies-card">
+    <div data-cy="card"  className="small-movie-card catalog__movies-card">
       <article style={{width: 280}}>
         <Link to={`/films/${id}`}>
           <div  className="small-movie-card__image"
-               onMouseOver={() => playVideo()} onFocus={() => playVideo()}
+               onMouseEnter={() => playVideo()} onFocus={() => playVideo()}
                onMouseOut={()=>pauseVideo()} onBlur={()=>playVideo()}
           >
             <video
+              loop
               style={{width: 300}}
               ref={playerRef}
               poster={`${prevImage}`}

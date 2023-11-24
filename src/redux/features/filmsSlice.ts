@@ -4,11 +4,11 @@ import {fetchFilms, Film} from "./asyncActions";
 import {INIT_GENRES} from "../../consts";
 
 export interface Films {
-  films:Film[]
-  myFilms:Film[]
-  currentGenre: string
-  loading?:string
-  error?:string
+  films:Film[],
+  myFilms:Film[],
+  currentGenre: string,
+  loading?:string,
+  error?:string,
 }
 
 const initialState: Films = {
@@ -23,10 +23,10 @@ export const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
-    setCurrentGenre: (state, action:PayloadAction<string>) => {
+    setCurrentGenre: (state:Films, action:PayloadAction<string>) => {
       state.currentGenre = action.payload
     },
-    addMyFilm:(state, action:PayloadAction<Film>) => {
+    addMyFilm:(state:Films, action:PayloadAction<Film>) => {
       const isFilm = state.myFilms.find((obj) => obj.id === action.payload.id)
       if(!isFilm){
         state.myFilms.push(action.payload)
@@ -36,7 +36,7 @@ export const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFilms.fulfilled, (state, action:PayloadAction<Film[]>) => {
+      .addCase(fetchFilms.fulfilled, (state:Films, action:PayloadAction<Film[]>) => {
         state.films = action.payload
       })
       .addCase(fetchFilms.rejected, (state, action) => {
@@ -47,6 +47,6 @@ export const filmsSlice = createSlice({
 })
 
 
-export const {addMyFilm,setCurrentGenre,filteredGenres} = filmsSlice.actions
+export const {addMyFilm,setCurrentGenre} = filmsSlice.actions
 
 export default filmsSlice.reducer

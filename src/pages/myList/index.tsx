@@ -31,7 +31,7 @@ export const MyList = () => {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <CatalogGenresList films={films}/>
+        <CatalogGenresList films={myFilms}/>
         <CatalogMoviesList
           films={currentGenre === INIT_GENRES ?
             myFilms
@@ -42,7 +42,7 @@ export const MyList = () => {
       <div>
         <footer className="page-footer">
           <div className="logo">
-            <div className="logo__link logo__link--light">
+            <div data-cy="logo" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
