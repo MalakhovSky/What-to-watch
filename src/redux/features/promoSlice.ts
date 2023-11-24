@@ -18,7 +18,7 @@ export const promoSlice = createSlice({
   name: 'promo',
   initialState,
   reducers: {
-    setPromo: () => {
+    _: () => {
     }
   },
   extraReducers: (builder) => {

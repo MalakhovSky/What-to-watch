@@ -31,8 +31,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    isLogged: (state, action:PayloadAction<boolean>) => {
-      state.isLogged = action.payload
+    _: () => {
     }
   },
   extraReducers: (builder) => {
@@ -48,5 +47,4 @@ export const userSlice = createSlice({
 
   },
 })
-export const {isLogged} = userSlice.actions
 export default userSlice.reducer

@@ -3,7 +3,7 @@ describe('films',()=>{
    cy.login()
 
     cy.get('[data-cy="card"]').should('have.length', 8)
-    for(let i = 0; i < 3;i++){
+    for(let i = 0; i < 3;i+=1){
       cy.contains('Show more').click()
     }
     const num = 25;

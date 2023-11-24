@@ -26,7 +26,7 @@ export const CommentsSlice = createSlice({
   name: 'comments',
   initialState,
   reducers: {
-    increment: () => {
+    _: () => {
     }
   },
   extraReducers: (builder) => {
