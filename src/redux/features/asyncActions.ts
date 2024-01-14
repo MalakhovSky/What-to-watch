@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import {User} from "./userSlice";
 import {Comments} from "./commentsSlice";
 import api from "./api";
 
 export type Film = {
+  promo: Film;
   id:number,
   name:string,
   poster_image:string,

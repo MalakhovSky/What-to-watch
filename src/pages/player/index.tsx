@@ -16,6 +16,7 @@ export const Player:React.FC = () => {
   const filmsData = useAppSelector(state=>state.films.films)
 
   const film = filmsData.find((item)=>item.id === Number(id))
+  console.log(film,'film')
 
   const playerRef = useRef(null);
 
@@ -38,7 +39,7 @@ export const Player:React.FC = () => {
   return (
 
     <div className="player">
-      <video className="player__video" poster={film.poster_image} ref={playerRef}>
+      <video className="player__video" poster={film.background_image} ref={playerRef}>
         <track kind="captions" />
         <source src={film.video_link}
 
@@ -50,7 +51,7 @@ export const Player:React.FC = () => {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value={2} max={film.run_time}/>
+            lowScreen
           </div>
           <div className="player__time-value">{`${filmTimeHours}:${(film.run_time)-60*filmTimeHours}`}</div>
         </div>
@@ -61,7 +62,8 @@ export const Player:React.FC = () => {
             {
               !isPlay ? <svg viewBox="0 0 19 19" width="19" height="19">
                 <use href="#play-s"/>
-              </svg>:<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              </svg>:
+                <svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"/>
                 <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"/>
@@ -81,7 +83,7 @@ export const Player:React.FC = () => {
     </div>
 
   );
-  } else{
-    return <div>LOADING</div>
   }
+    return <div>LOADING</div>
+
 };

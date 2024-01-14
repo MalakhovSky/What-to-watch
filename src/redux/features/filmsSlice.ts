@@ -39,7 +39,7 @@ export const filmsSlice = createSlice({
       .addCase(fetchFilms.fulfilled, (state:Films, action:PayloadAction<Film[]>) => {
         state.films = action.payload
       })
-      .addCase(fetchFilms.rejected, (state, action) => {
+      .addCase(fetchFilms.rejected, () => {
         console.log('ошибка получения фильмов')
       })
 

@@ -14,7 +14,7 @@ export const MyListBtn = ({film}:PropsType) => {
   return (
       <button data-cy="myListBtn" onClick = {()=>dispatch(addMyFilm(film))} className="btn btn--list movie-card__button" type="button">
         <svg viewBox="0 0 19 20" width="19" height="20">
-          <use href="#add"></use>
+          <use href="#add"/>
         </svg>
         <span>My list</span>
       </button>

@@ -32,7 +32,7 @@ export const AddReview:React.FC = () => {
   }
 
   const handeAddReview = async (id,starValue,comment)=>{
-    fetchCommentsPost({id,starValue,comment})
+    await fetchCommentsPost({id,starValue,comment})
     await window.history.go(-1)
 
   }

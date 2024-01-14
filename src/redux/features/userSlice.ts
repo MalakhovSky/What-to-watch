@@ -4,6 +4,7 @@ import {postUser} from "./asyncActions";
 
 
 export type User = {
+  user: User;
   email: string
   id: number
   name: string
