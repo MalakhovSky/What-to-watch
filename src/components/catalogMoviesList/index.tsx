@@ -3,6 +3,7 @@ import {MovieCard} from "../movieCard";
 import {ShowMoreBtn} from "../showMoreBtn";
 import {INIT_FILMS_COUNTER} from "../../consts";
 import {Film} from "../../redux/features/asyncActions";
+import {ErrorPage} from "../errorPage";
 
 type PropsType = {
   films: Film[]
@@ -38,5 +39,6 @@ export const CatalogMoviesList: React.FC = ({films}: PropsType) => {
       </div>
     );
   }
+    return (<ErrorPage/>)
 
 };

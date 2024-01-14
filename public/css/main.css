@@ -504,6 +504,7 @@ main {
   font-weight: 400; }
 
 .catalog__genres-list {
+  cursor: pointer;
   padding: 25px 0;
   margin: 0;
   list-style: none;

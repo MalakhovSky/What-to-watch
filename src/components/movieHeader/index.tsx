@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
 import {MovieCardBg} from "../movieCardBg";
 import {Logo} from "../logo";
@@ -47,7 +47,7 @@ export const MovieHeader:React.FC = () => {
             <div className="movie-card__buttons">
               <button className="btn btn--play movie-card__button" type="button">
                 <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use href="#play-s"></use>
+                  <use href="#play-s"/>
                 </svg>
                 <Link to={`/player/${promo?.id}`} className="breadcrumbs__link"><span>Play</span></Link>
               </button>

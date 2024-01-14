@@ -17,7 +17,6 @@ export const MyList = () => {
   }, [dispatch]);
 
   const myFilms = useAppSelector(state => state.films.myFilms)
-  const films = useAppSelector(state => state.films.films)
   const currentGenre = useAppSelector(state => state.films.currentGenre)
 
 
