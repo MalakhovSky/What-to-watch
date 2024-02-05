@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = 'https://6.react.pages.academy/wtw/'
+export const API_URL = 'https://6.react.htmlacademy.pro/wtw'
 
 
 const  $api = axios.create({
